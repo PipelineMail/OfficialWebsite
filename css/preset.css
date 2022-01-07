@@ -249,6 +249,15 @@ ul li{
 /*------------------------------------------------------------------------------
 / 5. Section Settings
 ------------------------------------------------------------------------------*/
+.faqCommonSection{
+    padding: 5px 0 6px;
+    position: relative;
+}
+.faqCommonSection .container{
+    position: relative;
+    z-index: 2;
+}
+
 .commonSection{
     padding: 85px 0 96px;
     position: relative;
@@ -257,6 +266,7 @@ ul li{
     position: relative;
     z-index: 2;
 }
+
 .grays{
     background: #f8f8fb;
 }

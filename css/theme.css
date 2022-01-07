@@ -262,7 +262,7 @@ Version: 1.0
 }
 .header_bg_1{
     position: relative;
-    padding: 100px 0;
+    padding: 230px 0;
 }
 .header_bg_1:after {
     position: absolute;
@@ -3484,6 +3484,24 @@ Version: 1.0
 .faqPdLeft{
     padding-left: 65px;
 }
+.faqSingleFaq{
+    position: relative;
+    margin: 0 0 1px;
+}
+.faqSingleFaq h3{
+    font-size: 25px;
+    line-height: 40px;
+    color: #232323;
+    font-weight: 600;
+    margin-bottom: 26px;
+}
+.faqSingleFaq p{
+    font-size: 23px;
+    line-height: 40px;
+    color: #8d8d8d;
+    margin: 0;
+}
+
 .singleFaq{
     position: relative;
     margin: 0 0 51px;
@@ -3501,6 +3519,7 @@ Version: 1.0
     color: #8d8d8d;
     margin: 0;
 }
+
 .questinForm input[type="text"], .questinForm input[type="number"], .questinForm input[type="email"], .questinForm textarea {
     font-size: 19px;
     color: #606378;
