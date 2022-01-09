@@ -516,7 +516,7 @@ Version: 1.0
 }
 .customer_area{
     position: relative;
-    padding: 63px 40px 137px 89px;
+    padding: 63px 40px 107px 89px;
     background: url(../images/about/4.png) no-repeat left top / cover;
 }
 .singleCustomer {
@@ -547,7 +547,7 @@ Version: 1.0
     color: #ffffff;
     line-height: 32px;
     font-weight: 700;
-    margin: 0 0 10px;
+    margin: 0 0 29px;
 }
 .customer_thumb{
     position: relative;

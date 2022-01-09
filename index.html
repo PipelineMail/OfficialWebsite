@@ -20,6 +20,40 @@
         <link rel="stylesheet" type="text/css" href="css/responsive.css"/>
         <!-- Favicon Icon -->
         <link rel="icon"  type="image/png" href="images/favicon.png">
+        <style>
+            .arrow{
+                border: 25px solid transparent;
+                border-bottom-color: #8180e0;
+                width: 0px;
+                height: 0px;
+                top:0px
+            }
+            .stick{
+                width: 25px;
+                height: 32px;
+                border-radius: 1px;
+                background-color: #8180e0;
+                top:42px;
+            }
+            #back_top div{
+                position: absolute;
+                margin: auto;
+                right: 0px;
+                left: 0px;
+            }
+            #back_top{
+                background-color: #d9d9f6;
+                height: 100px;
+                width: 100px;
+                border-radius: 3px;
+                display: block;
+                cursor: pointer;
+                position: fixed;
+                right: 85px;
+                bottom: 75px;
+                display: none;
+            }
+        </style>
     </head>
     <body>
         <!-- Preloading -->
@@ -231,7 +265,7 @@
                             <p>Third, users are protected from spam.</p>
                             <p>&nbsp;</p>
 <!--                        <p>We are here to help you when you need your financial support, then we are help you.</p>-->
-                            <h4>PipeMail solves these problems.</h4>
+                            <h4><b style="color:black;">PipeMail solves these problems.</b></h4>
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-7">
@@ -259,7 +293,7 @@
                                 <img src="images/no_register.png" alt=""/>
                             </div>
                             <p>
-                                If you want to use PipeMail, all you need to do is connect to your digital wallet, and nothing else needs to be provided.
+                                If you want to use PipeMail, all you need to do is connect to your digital wallet, nothing else needs to be provided.
                             </p>
                             <b style="color: black">No Registration Required</b>
                         </div>
@@ -333,12 +367,14 @@
                         <p class="sec_desc">Please choose your use.</p>
                         <p class="index_select_use_active" id="index_select_use_personal" onclick="indexSelectUseActive('personal')">Personal Use</p>
                         &nbsp;&nbsp;or&nbsp;&nbsp;
-                        <p class="index_select_use" id="index_select_use_dapp" onclick="indexSelectUseActive('dapp')">For My Dapp</p><br>
+                        <p class="index_select_use" id="index_select_use_dapp" onclick="indexSelectUseActive('dapp')">For My Dapp <p>&nbsp;</p></p>
                         <p class="sec_desc" id="index_select_use_explain_personal" style="display: inline">
                             You can : &#9312; send mails to others &nbsp;&#9313; donate to a Dapp &nbsp;&#9314; send digital assets
                         </p>
                         <p class="sec_desc" id="index_select_use_explain_dapp" style="display: none">
                             If you're the owner of a Dapp, you can send mails to your users. (such as airdrops, official notice, etc)
+                        <p>&nbsp;</p>
+
                         </p>
                     </div>
                 </div>
@@ -473,6 +509,58 @@
         <!-- Common section -->
 
         <!-- Common section -->
+        <section class="commonSection custome_sec_2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 faqPdRight">
+                        <div class="singleFaq">
+                            <br>
+                            <h2 class="sec_title">&nbsp;&nbsp;&nbsp;Who is PipeMail for ?</h2>
+                        </div>
+                        <div class="customer_area faqPdRight">
+                            <div class="singleCustomer">
+                                <img src="images/web3.0.png" alt=""/>
+                                <p>
+                                    From time time we need generate
+                                    sample names to populate a test
+                                    database usually just requiring first
+                                    and last names address.
+                                </p>
+                                <h5>Austin Matthews</h5>
+                            </div>
+                            <div class="singleCustomer">
+                                <img src="images/web3.0.png" alt=""/>
+                                <p>
+                                    From time time we need generate
+                                    sample names to populate a test
+                                    database usually just requiring first
+                                    and last names address.
+                                </p>
+                                <h5>Evelyn Goodman</h5>
+                            </div>
+                            <div class="singleCustomer">
+                                <img src="images/about/5.png" alt=""/>
+                                <p>
+                                    From time time we need generate
+                                    sample names to populate a test
+                                    database usually just requiring first
+                                    and last names address.
+                                </p>
+                                <h5>Calvin Cannon</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="customer_thumb">
+                            <img src="images/about/3.png" alt=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Common section -->
+
+        <!-- Common section -->
         <section class="commonSection">
             <div class="container">
                 <div class="row">
@@ -515,165 +603,12 @@
         </section>
         <!-- Common section -->
 
-        <!-- Common section -->
-        <section class="commonSection custome_sec_2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h2 class="sec_title">How to say our most<br> honorable customer</h2>
-                        <p class="sec_desc">We are here to help you when you need your financial<br> support, then we are help you.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="customer_area">
-                            <div class="singleCustomer">
-                                <img src="images/about/5.png" alt=""/>
-                                <div class="quote_img"><img src="images/quote.png" alt=""/></div>
-                                <p>
-                                    From time time we need generate
-                                    sample names to populate a test
-                                    database usually just requiring first
-                                    and last names address.
-                                </p>
-                                <h5>Austin Matthews</h5>
-                                <div class="cus_signature">
-                                    <img src="images/signature.png" alt=""/>
-                                </div>
-                            </div>
-                            <div class="singleCustomer">
-                                <img src="images/about/5.png" alt=""/>
-                                <div class="quote_img"><img src="images/quote.png" alt=""/></div>
-                                <p>
-                                    From time time we need generate
-                                    sample names to populate a test
-                                    database usually just requiring first
-                                    and last names address.
-                                </p>
-                                <h5>Evelyn Goodman</h5>
-                                <div class="cus_signature">
-                                    <img src="images/signature.png" alt=""/>
-                                </div>
-                            </div>
-                            <div class="singleCustomer">
-                                <img src="images/about/5.png" alt=""/>
-                                <div class="quote_img"><img src="images/quote.png" alt=""/></div>
-                                <p>
-                                    From time time we need generate
-                                    sample names to populate a test
-                                    database usually just requiring first
-                                    and last names address.
-                                </p>
-                                <h5>Calvin Cannon</h5>
-                                <div class="cus_signature">
-                                    <img src="images/signature.png" alt=""/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="customer_thumb">
-                            <img src="images/about/3.png" alt=""/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Common section -->
-
-        <!-- Common section -->
-        <section class="commonSection postTodaySec">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h2 class="sec_title">Warm Content of Todays</h2>
-                        <p class="sec_desc">We are here to help you when you need your financial<br> support, then we are help you.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-md-5">
-                        <div class="latestPost">
-                            <h4><a href="#">What should you need do to get personal loan ver easay.</a></h4>
-                            <span>20 days ago</span>
-                            <p>
-                                Many modern alternatives often eumen incorpo
-                                other content actually detracts from...
-                            </p>
-                            <a href="#" class="readMore">More details</a>
-                        </div>
-                        <div class="latestPost">
-                            <h4><a href="#">What should you need do to get personal loan ver easay.</a></h4>
-                            <span>20 days ago</span>
-                            <p>
-                                Many modern alternatives often eumen incorpo
-                                other content actually detracts from...
-                            </p>
-                            <a href="#" class="readMore">More details</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-md-7">
-                        <div class="featureImg text-center">
-                            <img src="images/home/2.png" alt=""/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Common section -->
-
-        <!-- footer section -->
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <aside class="widget about_widgets">
-                            <img src="images/logo.png" alt=""/>
-                            <p>88 694 895 684</p>
-                            <p>88 487 983 576</p>
-                            <p>loanplus@gmail.com</p>
-                        </aside>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <aside class="widget recent_posts">
-                            <div class="singleLPost">
-                                <h4><a href="#">What should you need do to get personal loan ver easay.</a></h4>
-                                <span>20 days ago</span>
-                                <p>
-                                    Many modern alternatives often eumen incorpo
-                                    other content actually detracts from...
-                                </p>
-                            </div>
-                            <div class="singleLPost">
-                                <h4><a href="#">What should you need do to get personal loan ver easay.</a></h4>
-                                <span>20 days ago</span>
-                                <p>
-                                    Many modern alternatives often eumen incorpo
-                                    other content actually detracts from...
-                                </p>
-                            </div>
-                        </aside>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <aside class="widget subscribe_widgets">
-                            <h3>Subscribe our newsletter.</h3>
-                            <form action="#" method="post">
-                                <input type="email" placeholder="Email address" name="email"/>
-                                <input type="text" placeholder="Phone no." name="phone"/>
-                                <input type="submit" value="Subscribe now">
-                            </form>
-                        </aside>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- footer section -->
-
         <!-- Copyright section -->
         <section class="copyright">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-6">
-                        <p>Copyright By <a href="http://www.jq22.com/">jq22</a>. All rights reserved</p>
+                    <div class="col-sm-12">
+                        <p style="text-align: center">Copyright By <a href="http://www.jq22.com/">jq22</a>. All rights reserved</p>
                     </div>
                     <div class="col-sm-6 text-right">
                         <a href="#" id="backTo"><i class="flaticon-chevron"></i></a>
@@ -682,7 +617,10 @@
             </div>
         </section>
         <!-- Copyright section -->
-
+        <div id="back_top">
+            <div class="arrow"></div>
+            <div class="stick"></div>
+        </div>
         <!-- Include All JS -->
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -698,6 +636,22 @@
         <script src="js/owl.carousel.js"></script>
         <script src="js/theme.js"></script>
         <script src="js/custom.js"></script>
+        <script>
+            $(function(){
+                $(window).scroll(function(){
+                    var scrollt = document.documentElement.scrollTop + document.body.scrollTop;
+                    if( scrollt >800 ){
+                        $("#back_top").fadeIn(400);
+                    }else{
+                        $("#back_top").stop().fadeOut(400);
+                    }
+                });
+                $("#back_top").click(function(){
+                    var scrollt = document.documentElement.scrollTop + document.body.scrollTop;
+                    $("html,body").animate({scrollTop:"0px"},scrollt>3000?1000:500);
+                });
+            });
+        </script>
     </body>
 
 </html>
