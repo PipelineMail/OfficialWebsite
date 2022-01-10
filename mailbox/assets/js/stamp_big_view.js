@@ -23,12 +23,24 @@ $('.stamp_big_view').click(function () {
 	$('.swiper-container').children('.swiper-notification').eq(0).siblings('.swiper-notification').remove()
 })
 $('body').click(function (e) {
-	var con = $(".stamp_big_view");
-	// alert(con.is(e.target))
-	// alert(((e.clientX > minX && e.clientX < maxX && (e.clientY > minY && e.clientY < maxY)))
-	// alert(e.clientX)
-	// alert(e.clientY)
-	if (!con.is(e.target)&&!((e.clientX > minX && e.clientX < maxX) && (e.clientY > minY && e.clientY < maxY))) {
+	if (!$(".stamp_big_view").is(e.target)&&!((e.clientX > minX && e.clientX < maxX) && (e.clientY > minY && e.clientY < maxY))) {
 		$('.modelTost').remove();
 	}
 })
+
+$('#button-compose').click(function (e) {
+	document.getElementById("new-mail").style.display = "inline";
+	document.getElementById("recent-mails").style.display = "none";
+	document.getElementById("mail-details").style.display = "none";
+})
+
+$('#close-compose').click(function (e) {
+	if(document.getElementById("new-mail").style.display=="inline") {
+		if(confirm("Are you sure you want to abandon this email?")) {
+			document.getElementById("new-mail").style.display = "none";
+			document.getElementById("recent-mails").style.display = "inline";
+			document.getElementById("mail-details").style.display = "inline";
+		}
+	}
+})
+

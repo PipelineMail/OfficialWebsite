@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<title></title>
+</head>
+
+<body>
+<input type="file" class="uploading" name="file" id="uploadimg" accept="image/jpg,image/jpeg,image/gif,image/png">
+<div style="width: 300px;height: 200px;text-align: center;">
+	<img id="img" style="max-width: 300px;max-height: 200px;"/>
+</div>
+</body>
+
+<script src="js/jquery.js"></script>
+<script>
+	function _addImgFileListener(obj, fun) {
+		$(obj).change(function() {
+			try {
+				var file = this.files[0];
+				console.log(file.size)
+				var reader = new FileReader();
+				reader.onload = function() {
+					var img = new Image();
+					img.src = reader.result;
+					img.onload = function() {
+						var w = 100,
+								h = 100/img.width*img.height;
+						var canvas = document.createElement('canvas');
+						var ctx = canvas.getContext('2d');
+						$(canvas).attr({
+							width: w,
+							height: h
+						});
+						ctx.drawImage(img, 0, 0, w, h);
+						var base64 = canvas.toDataURL('image/jpeg', 0.5);
+						var result = {
+							url: window.URL.createObjectURL(file),
+							base64: base64,
+							clearBase64: base64.substr(base64.indexOf(',') + 1),
+							suffix: base64.substring(base64.indexOf('/') + 1, base64.indexOf(';')),
+						};
+						fun(result);
+					}
+				}
+				reader.readAsDataURL(this.files[0]);
+			} catch(e) {
+				_showMsg(e);
+			}
+		});
+	}
+	$(document).ready(function() {
+		_addImgFileListener("#uploadimg", function(data) {
+			//你的业务
+			console.log(data.base64)
+			$("#img").attr("src",data.base64);
+		});
+	})
+</script>
+
+</html>
