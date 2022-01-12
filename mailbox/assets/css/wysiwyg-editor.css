@@ -162,11 +162,13 @@
     height: 3em;
     line-height: 3em;
     border: 2px dashed #aaaaaa;
-    padding: 10px;
+    /*padding: 10px;*/
     color: #aaaaaa;
     text-align: center;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    padding-top: 1px;
+    padding-bottom: 1px;
     cursor: pointer;
 }
 .wysiwyg-browse:hover,
@@ -174,4 +176,65 @@
 .wysiwyg-browse:focus {
     color: black;
     border-color: #777777;
+}
+/* CSS for the font-name + font-size plugin */
+
+.wysiwyg-toolbar-list {
+
+    max-height: 16em;
+
+    overflow: auto;
+
+    overflow-x: hidden;
+
+    overflow-y: scroll;
+
+}
+
+.wysiwyg-toolbar-list a,
+
+.wysiwyg-toolbar-list a:link,
+
+.wysiwyg-toolbar-list a:visited {
+
+    display: block;
+
+    color: black;
+
+    padding: 5px 10px;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+}
+
+.wysiwyg-toolbar-list a:hover {
+
+    color: HighlightText;
+
+    background-color: Highlight;
+
+}
+
+/* CSS for the smiley plugin */
+
+.wysiwyg-toolbar-smilies {
+
+    padding: 10px;
+
+    text-align: center;
+
+    white-space: normal;
+
+}
+
+.wysiwyg-toolbar-smilies img {
+
+    display: -moz-inline-stack; /* inline-block: http://blog.mozilla.org/webdev/2009/02/20/cross-browser-inline-block/ */
+
+    display: inline-block;
+
+    *display: inline;
+
 }

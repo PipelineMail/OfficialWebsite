@@ -7,6 +7,27 @@
     <title>Adminage - Admin Dashboard</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/stamp_big_view.css" />
+
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+
+    <script type="text/javascript" src="assets/js/wysiwyg.js"></script>
+
+    <script type="text/javascript" src="assets/js/wysiwyg-editor.js"></script>
+
+    <link rel="stylesheet" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/wysiwyg-editor.css" />
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#editor1').each(function(index,element){
+                $(element).wysiwyg({classes:'some-more-classes',position:'top-selection',buttons:{smilies:{title:'Smilies',image:'\uf118',popup:function($popup,$button,$editor){var list_smilies=['<img src="smiley/afraid.png" width="16" height="16" alt="" />','<img src="smiley/amorous.png" width="16" height="16" alt="" />','<img src="smiley/angel.png" width="16" height="16" alt="" />','<img src="smiley/angry.png" width="16" height="16" alt="" />','<img src="smiley/bored.png" width="16" height="16" alt="" />','<img src="smiley/cold.png" width="16" height="16" alt="" />','<img src="smiley/confused.png" width="16" height="16" alt="" />','<img src="smiley/cross.png" width="16" height="16" alt="" />','<img src="smiley/crying.png" width="16" height="16" alt="" />','<img src="smiley/devil.png" width="16" height="16" alt="" />','<img src="smiley/disappointed.png" width="16" height="16" alt="" />','<img src="smiley/dont-know.png" width="16" height="16" alt="" />','<img src="smiley/drool.png" width="16" height="16" alt="" />','<img src="smiley/embarrassed.png" width="16" height="16" alt="" />','<img src="smiley/excited.png" width="16" height="16" alt="" />','<img src="smiley/excruciating.png" width="16" height="16" alt="" />','<img src="smiley/eyeroll.png" width="16" height="16" alt="" />','<img src="smiley/happy.png" width="16" height="16" alt="" />','<img src="smiley/hot.png" width="16" height="16" alt="" />','<img src="smiley/hug-left.png" width="16" height="16" alt="" />','<img src="smiley/hug-right.png" width="16" height="16" alt="" />','<img src="smiley/hungry.png" width="16" height="16" alt="" />','<img src="smiley/invincible.png" width="16" height="16" alt="" />','<img src="smiley/kiss.png" width="16" height="16" alt="" />','<img src="smiley/lying.png" width="16" height="16" alt="" />','<img src="smiley/meeting.png" width="16" height="16" alt="" />','<img src="smiley/nerdy.png" width="16" height="16" alt="" />','<img src="smiley/neutral.png" width="16" height="16" alt="" />','<img src="smiley/party.png" width="16" height="16" alt="" />','<img src="smiley/pirate.png" width="16" height="16" alt="" />','<img src="smiley/pissed-off.png" width="16" height="16" alt="" />','<img src="smiley/question.png" width="16" height="16" alt="" />','<img src="smiley/sad.png" width="16" height="16" alt="" />','<img src="smiley/shame.png" width="16" height="16" alt="" />','<img src="smiley/shocked.png" width="16" height="16" alt="" />','<img src="smiley/shut-mouth.png" width="16" height="16" alt="" />','<img src="smiley/sick.png" width="16" height="16" alt="" />','<img src="smiley/silent.png" width="16" height="16" alt="" />','<img src="smiley/sleeping.png" width="16" height="16" alt="" />','<img src="smiley/sleepy.png" width="16" height="16" alt="" />','<img src="smiley/stressed.png" width="16" height="16" alt="" />','<img src="smiley/thinking.png" width="16" height="16" alt="" />','<img src="smiley/tongue.png" width="16" height="16" alt="" />','<img src="smiley/uhm-yeah.png" width="16" height="16" alt="" />','<img src="smiley/wink.png" width="16" height="16" alt="" />','<img src="smiley/working.png" width="16" height="16" alt="" />','<img src="smiley/bathing.png" width="16" height="16" alt="" />','<img src="smiley/beer.png" width="16" height="16" alt="" />','<img src="smiley/boy.png" width="16" height="16" alt="" />','<img src="smiley/camera.png" width="16" height="16" alt="" />','<img src="smiley/chilli.png" width="16" height="16" alt="" />','<img src="smiley/cigarette.png" width="16" height="16" alt="" />','<img src="smiley/cinema.png" width="16" height="16" alt="" />','<img src="smiley/coffee.png" width="16" height="16" alt="" />','<img src="smiley/girl.png" width="16" height="16" alt="" />','<img src="smiley/console.png" width="16" height="16" alt="" />','<img src="smiley/grumpy.png" width="16" height="16" alt="" />','<img src="smiley/in_love.png" width="16" height="16" alt="" />','<img src="smiley/internet.png" width="16" height="16" alt="" />','<img src="smiley/lamp.png" width="16" height="16" alt="" />','<img src="smiley/mobile.png" width="16" height="16" alt="" />','<img src="smiley/mrgreen.png" width="16" height="16" alt="" />','<img src="smiley/musical-note.png" width="16" height="16" alt="" />','<img src="smiley/music.png" width="16" height="16" alt="" />','<img src="smiley/phone.png" width="16" height="16" alt="" />','<img src="smiley/plate.png" width="16" height="16" alt="" />','<img src="smiley/restroom.png" width="16" height="16" alt="" />','<img src="smiley/rose.png" width="16" height="16" alt="" />','<img src="smiley/search.png" width="16" height="16" alt="" />','<img src="smiley/shopping.png" width="16" height="16" alt="" />','<img src="smiley/star.png" width="16" height="16" alt="" />','<img src="smiley/studying.png" width="16" height="16" alt="" />','<img src="smiley/suit.png" width="16" height="16" alt="" />','<img src="smiley/surfing.png" width="16" height="16" alt="" />','<img src="smiley/thunder.png" width="16" height="16" alt="" />','<img src="smiley/tv.png" width="16" height="16" alt="" />','<img src="smiley/typing.png" width="16" height="16" alt="" />','<img src="smiley/writing.png" width="16" height="16" alt="" />'];var $smilies=$('<div/>').addClass('wysiwyg-toolbar-smilies').attr('unselectable','on');$.each(list_smilies,function(index,smiley){if(index!=0)$smilies.append(' ');var $image=$(smiley).attr('unselectable','on');var imagehtml=' '+$('<div/>').append($image.clone()).html()+' ';$image.css({cursor:'pointer'}).click(function(event){$(element).wysiwyg('inserthtml',imagehtml)}).appendTo($smilies)});$smilies.css({maxWidth:parseInt($editor.width()*0.95)+'px'});$popup.append($smilies);var $toolbar=$button.parents('.wysiwyg-toolbar');if(!$toolbar.length)return;var left=0,top=0,node=$toolbar.get(0);while(node){left+=node.offsetLeft;top+=node.offsetTop;node=node.offsetParent}left+=parseInt(($toolbar.outerWidth()-$popup.outerWidth())/2);if($toolbar.hasClass('wysiwyg-toolbar-top'))top-=$popup.height()-parseInt($button.outerHeight()*1/4);else top+=parseInt($button.outerHeight()*3/4);$popup.css({left:left+'px',top:top+'px'});return false},showselection:index==2?true:false},insertimage:{title:'Insert image',image:'\uf030',showselection:false},insertlink:{title:'Insert link',image:'\uf08e'},fontname:index==1?false:{title:'Font',image:'\uf031',popup:function($popup,$button,$editor){var list_fontnames={'Arial, Helvetica':'Arial,Helvetica','Verdana':'Verdana,Geneva','Georgia':'Georgia','Courier New':'Courier New,Courier','Times New Roman':'Times New Roman,Times'};var $list=$('<div/>').addClass('wysiwyg-toolbar-list').attr('unselectable','on');$.each(list_fontnames,function(name,font){var $link=$('<a/>').attr('href','#').css('font-family',font).html(name).click(function(event){$(element).wysiwyg('fontname',font);$(element).wysiwyg('close-popup');event.stopPropagation();event.preventDefault();return false});$list.append($link)});$popup.append($list)},showselection:index==0?true:false},fontsize:index==1?false:{title:'Size',image:'\uf034',popup:function($popup,$button,$editor){var list_fontsizes={'Huge':7,'Larger':6,'Large':5,'Normal':4,'Small':3,'Smaller':2,'Tiny':1};var $list=$('<div/>').addClass('wysiwyg-toolbar-list').attr('unselectable','on');$.each(list_fontsizes,function(name,size){var $link=$('<a/>').attr('href','#').css('font-size',(8+(size*3))+'px').html(name).click(function(event){$(element).wysiwyg('fontsize',size);$(element).wysiwyg('close-popup');event.stopPropagation();event.preventDefault();return false});$list.append($link)});$popup.append($list)}},bold:{title:'Bold (Ctrl+B)',image:'\uf032',hotkey:'b'},italic:{title:'Italic (Ctrl+I)',image:'\uf033',hotkey:'i'},underline:{title:'Underline (Ctrl+U)',image:'\uf0cd',hotkey:'u'},strikethrough:{title:'Strikethrough (Ctrl+S)',image:'\uf0cc',hotkey:'s'},forecolor:{title:'Text color',image:'\uf1fc'},highlight:{title:'Background color',image:'\uf043'},alignleft:index!=0?false:{title:'Left',image:'\uf036',showselection:false},aligncenter:index!=0?false:{title:'Center',image:'\uf037',showselection:false},alignright:index!=0?false:{title:'Right',image:'\uf038',showselection:false},alignjustify:index!=0?false:{title:'Justify',image:'\uf039',showselection:false},subscript:index==1?false:{title:'Subscript',image:'\uf12c',showselection:true},superscript:index==1?false:{title:'Superscript',image:'\uf12b',showselection:true},indent:index!=0?false:{title:'Indent',image:'\uf03c',showselection:false},outdent:index!=0?false:{title:'Outdent',image:'\uf03b',showselection:false},orderedList:index!=0?false:{title:'Ordered list',image:'\uf0cb',showselection:false},unorderedList:index!=0?false:{title:'Unordered list',image:'\uf0ca',showselection:false},removeformat:{title:'Remove format',image:'\uf12d'}},submit:{title:'Submit',image:'\uf00c'},dropfileclick:'Drop image or click',placeholderUrl:'www.example.com',maxImageSize:[600,600]}).change(function(){if(typeof console!='undefined')console.log('change')}).focus(function(){if(typeof console!='undefined')console.log('focus')}).blur(function(){if(typeof console!='undefined')console.log('blur')})
+            });
+            $(".input-box").wxSelect({
+                data:[{"name":"admin","value":21},{"name":"animation","value":11},{"name":"available","value":13},{"name":"bady","value":23},{"name":"coun","value":23},{"name":"张三","value":23},{"name":"周琪","value":19},{"name":"赵六","value":26},{"name":"王五","value":22},{"name":"李四","value":25},{"name":"张麻子","value":25}]
+            });
+        });
+    </script>
 </head>
 
 <body class="t-bg-primary mx-sidenav-not-collapsed">
@@ -21,7 +42,7 @@
 
                                 <header class="header sticky-top d-none d-xl-block">
                                     <div class="pagination t-bg-16 d-flex align-items-center justify-content-between">&nbsp;
-                                            <span class="fa fa-gear" style="font-size: 20px; padding-right: 50px;padding-top: 17px"></span>
+                                            <span class="fa fa-gear" style="font-size: 20px; padding-right: 56px;padding-top: 11px;height: 26px"></span>
                                     </div>
                                 </header>
 
@@ -36,7 +57,7 @@
                                                             <img src="./assets/img/copy.png">
                                                         </h6>
                                                     </div>
-                                                    <div class="mx-inbox1 mb-0 t-bg-light-2" id="button-compose" style="background-color: #d5d4f5;height: 70px;padding-top: 25px">
+                                                    <div class="mx-inbox1 mb-0 t-bg-light-2" id="button-compose" style="background-color: #d5d4f5;height: 77px;padding-top: 28px">
                                                         <h6 class="mt-0 text-capitalize mb-0" style="text-align: center">
                                                             compose&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/img/add.png">
                                                         </h6>
@@ -244,7 +265,86 @@
                                                             </div>
                                                         </div>
                                                 </div>
-                                                <div class="col-md-12 col-xl-12 col-xxl-10 border t-bg-white px-0" id="new-mail" style="display: none"></div>
+
+
+
+
+
+
+
+                                                <div class="col-xl-5 col-xxl-7 t-bg-white border px-0" id="new-mail" style="display: none">
+                                                    <div style="width:860px; margin-top: 80px;margin-bottom: 50px;margin-left: 108px">
+                                                        <div>
+                                                            To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
+                                                            <input type="text" style="width: 770px;border:none;border-bottom:1px solid #000;"/>
+                                                        </div>
+                                                        <div>
+                                                            Subject&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
+                                                            <input type="text" style="width: 770px;border:none;border-bottom:1px solid #000;margin-bottom: 30px"/>
+                                                        </div>
+
+
+                                                        <div style="height: 490px" id="editor1" name="editor" placeholder="Type your text here...">
+aaaaaaaaaaaaaaaaa
+                                                        </div>
+                                                        <div style="text-align: right">
+                                                            <button style="text-align: right;margin-top: 20px" type="submit">delete</button>
+                                                            <button style="text-align: right;margin-top: 20px" type="submit">draft</button>
+                                                            <button style="text-align: right;margin-top: 20px" type="submit">cancle</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-xl-4 col-xxl-3 border t-bg-white px-0" id="new-mail-advantage" style="display: none">
+                                                    <div style="width: 415px;height: 260px;margin-top:40px;margin-left:21px;border:1px solid black;position: absolute"></div>
+                                                    <div style="width: 100%;height: 50px;padding-top: 60px;padding-left: 30px;text-align: center">Please choose a stamp.</div>
+                                                    <div style="text-align: center;display: none">
+                                                        <img style="width:20%;margin-top: 94px;margin-bottom:35px;margin-left: 183px" src="assets/img/select_stamp.png">
+                                                    </div>
+                                                    <div style="display: inline">
+                                                        <div style="margin-top: 70px;margin-bottom:70px;margin-left:196px;position: absolute;line-height: 40px">
+                                                            publisher&nbsp;: &nbsp;PipeMail<br>
+                                                            contract&nbsp;&nbsp;&nbsp;: &nbsp;0x58a4D...4b8D<img src="./assets/img/copy.png"><br>
+                                                            token id&nbsp;&nbsp;&nbsp;: &nbsp;11
+                                                        </div>
+                                                        <img style="width:150px;height:180px;margin-top:40px;margin-left: 36px" src="assets/img/stamp.jpg">
+                                                    </div>
+
+                                                    <div style="width: 415px;height: 417px;margin-top:60px;margin-left:21px;border:1px solid black;text-align: center">
+                                                    <div style="width: 100%;height: 50px;padding-top: 20px">Please enter digital assets and quantity.</div>
+                                                    <div style="display: inline;text-align: center">
+                                                        <div style="margin-top: 15px">
+                                                            ETH&nbsp;: &nbsp;<input style="height: 25px;width: 100px" placeholder="the quantity">&nbsp;*
+                                                            <select id="eth_uint_select" style="height: 25px;width: 105px" onchange="eth_uint_select()">
+                                                                <option value = "Wei">Weia</option>
+                                                                <option value = "Kwei">Kwei</option>
+                                                                <option value = "Gwei">Gwei</option>
+                                                                <option value = "Microether">Microether</option>
+                                                                <option value = "Milliether">Milliether</option>
+                                                                <option value = "Ether" selected>Ether(ETH)</option>
+
+                                                            </select>
+                                                            <div id="eth_uint_select_info" style="margin-top: 10px">1 ETH = 1 Ether = 10<sup>18</sup>&nbsp;Wei</div>
+                                                            <hr style="margin-top: 10px;width: 20%;margin-left: 165px"/>
+                                                            ERC20&nbsp;: &nbsp;
+                                                                <div class="input-box input-Selector">
+                                                                    <input type="text" class="wx-input" style="text-align: center" placeholder="Enter token's address">
+                                                                </div>
+                                                            <br>
+                                                            <hr style="margin-top: 10px;width: 20%;margin-left: 165px"/>
+                                                            ERC721&nbsp;: &nbsp;<input style="height: 25px;width: 100px" placeholder="the quantity"><br>
+                                                            <hr style="margin-top: 10px;width: 20%;margin-left: 165px"/>
+                                                            ERC1155&nbsp;: &nbsp;<input style="height: 25px;width: 100px" placeholder="the quantity"><br>
+                                                        </div>
+                                                    </div>
+<!--                                                        <img style="width:150px;height:180px;margin-top:60px;margin-left: 45px" src="assets/img/stamp.jpg">-->
+                                                    </div>
+
+                                                </div>
+
+
+
+
+
                                                 <div class="col-md-6 col-xl-4 col-xxl-3 border t-bg-white px-0" id="recent-mails">
                                                     <div class="mx-inbox1 d-flex justify-content-between align-items-center t-bg-light-2">
                                                         <h6 class="mt-0 mb-0 text-capitalize">
@@ -253,7 +353,7 @@
                                                         <input style="width: 220px" class="input" type="text" placeholder="Search title, contact...">
                                                     </div>
                                                     <div class="t-pb-30">
-                                                        <div class="mx-mail-box--height" data-simplebar>
+                                                        <div class="mx-mail-box--height" style="height: calc(100vh - 249px)" data-simplebar>
                                                             <ul class="t-list mx-mail-box__list">
                                                                 <li class="mx-mail-box__list-item">
                                                                     <a href="#" class="t-link mx-mail-box__link">
@@ -830,7 +930,7 @@
                                                                     <div class="messages__content messages__content--unseen">
                                                                         <div class="messages__title">
                                                                             <span class="messages__author text-capitalize">
-                                                                                Asaduzzaman
+                                                                                Asaduzzamana
                                                                                 sarker
                                                                             </span>
                                                                         </div>
@@ -843,13 +943,13 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </a><img class="stamp_big_view" src="assets/img/stamp.jpg" height="70px">
+                                                            </a><img class="stamp_big_view" src="assets/img/stamp.jpg" height="70px" width="60">
                                                         </div>
                                                     </div>
                                                     <div class="chat__right-main">
                                                         <div class="mx-inbox__body-head d-flex align-items-center justify-content-between flex-wrap t-pl-15 t-pr-15 t-pt-30">
                                                             <h6 class="mt-0 mb-md-0 text-capitalize t-mr-25">
-                                                                Adminage Dashboard Final Design
+                                                                Adminage Dashboard Final Designa
                                                             </h6>
                                                             <ul class="t-list d-flex align-items-center">
                                                                 <li class="t-list__item t-text-primary">
@@ -961,7 +1061,7 @@
     <!-- Page Wrapper End -->
 
     <!-- jquery -->
-    <script src="assets/js/jquery.js"></script>
+<!--    <script src="assets/js/jquery.js"></script>-->
     <script src="assets/js/jquery-ui.min.js"></script>
 
     <!-- Date and Time  -->
@@ -995,6 +1095,7 @@
     <!-- Main script -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/stamp_big_view.js"></script>
+<script src="assets/js/plumen.js"></script>
 </body>
 
 </html>

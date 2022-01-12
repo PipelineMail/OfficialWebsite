@@ -17,7 +17,7 @@ let maxY = 566;
 $('.stamp_big_view').click(function () {
 	tem = ''
 	$('.stamp_big_view1').append(tems);
-	tem += "<div class='swiper-slide'><img src='assets/img/stamp.jpg'></div>"
+	tem += "<div class='swiper-slide'><img src='assets/img/stamp.jpg' style='height: 285px;width: 260px'></div>"
 	$(".swiper-wrapper").append(tem);
 	$('.modelTost').fadeIn(500);
 	$('.swiper-container').children('.swiper-notification').eq(0).siblings('.swiper-notification').remove()
@@ -30,17 +30,46 @@ $('body').click(function (e) {
 
 $('#button-compose').click(function (e) {
 	document.getElementById("new-mail").style.display = "inline";
+	document.getElementById("new-mail-advantage").style.display = "inline";
 	document.getElementById("recent-mails").style.display = "none";
 	document.getElementById("mail-details").style.display = "none";
 })
 
 $('#close-compose').click(function (e) {
 	if(document.getElementById("new-mail").style.display=="inline") {
-		if(confirm("Are you sure you want to abandon this email?")) {
+		if(confirm("Are you sure you want to abandon this mail?")) {
 			document.getElementById("new-mail").style.display = "none";
+			document.getElementById("new-mail-advantage").style.display = "none";
 			document.getElementById("recent-mails").style.display = "inline";
 			document.getElementById("mail-details").style.display = "inline";
 		}
 	}
 })
 
+function eth_uint_select(){
+	var selectedValue = document.getElementById("eth_uint_select").value;
+	var innerHTML
+	switch (selectedValue) {
+		case 'Wei':
+			innerHTML = '1 ETH = 10<sup>18</sup>&nbsp;Wei';
+			break;
+		case 'Kwei':
+			innerHTML = '1 ' + selectedValue + ' = 10<sup>3</sup>&nbsp;Wei';
+			break;
+		case 'Mwei':
+			innerHTML = '1 ' + selectedValue + ' = 10<sup>6</sup>&nbsp;Wei';
+			break;
+		case 'Gwei':
+			innerHTML = '1 ' + selectedValue + ' = 10<sup>9</sup>&nbsp;Wei';
+			break;
+		case 'Microether':
+			innerHTML = '1 ' + selectedValue + ' = 10<sup>12</sup>&nbsp;Wei';
+			break;
+		case 'Milliether':
+			innerHTML = '1 ' + selectedValue + ' = 10<sup>15</sup>&nbsp;Wei';
+			break;
+		default:
+			innerHTML = '1 ETH = 1 Ether = 10<sup>18</sup>&nbsp;Wei';
+	}
+	document.getElementById("eth_uint_select_info").innerHTML=innerHTML
+}
