@@ -37,7 +37,8 @@ $('#button-compose').click(function (e) {
 
 $('#close-compose').click(function (e) {
 	if(document.getElementById("new-mail").style.display=="inline") {
-		if(confirm("Are you sure you want to abandon this mail?")) {
+		if (document.getElementById("editor1").innerText.trim()==='' || confirm("Are you sure you want to abandon this mail?")) {
+			document.getElementById("editor1").innerText = '';
 			document.getElementById("new-mail").style.display = "none";
 			document.getElementById("new-mail-advantage").style.display = "none";
 			document.getElementById("recent-mails").style.display = "inline";
@@ -72,4 +73,10 @@ function eth_uint_select(){
 			innerHTML = '1 ETH = 1 Ether = 10<sup>18</sup>&nbsp;Wei';
 	}
 	document.getElementById("eth_uint_select_info").innerHTML=innerHTML
+}
+
+function mailsList(list){
+	for(var i in list){
+
+	}
 }

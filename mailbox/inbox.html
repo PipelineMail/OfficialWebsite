@@ -68,9 +68,12 @@
                                             <div class="row g-3">
                                                 <div class="col-md-6 col-xl-3 col-xxl-2 t-bg-white border px-0">
                                                     <div class="mx-inbox1 t-bg-light-2">
-                                                        <h6 class="mt-0 mb-0 text-capitalize">
+                                                        <h6 class="mt-0 mb-0 text-capitalize" id="user-address" style="display: none">
                                                             0x584D65...204b8D
                                                             <img src="./assets/img/copy.png">
+                                                        </h6>
+                                                        <h6 class="mt-0 mb-0 text-capitalize" style="display: inline">
+                                                            Connect Wallet
                                                         </h6>
                                                     </div>
                                                     <div class="mx-inbox1 mb-0 t-bg-light-2" id="button-compose" style="background-color: #d5d4f5;height: 77px;padding-top: 28px">
@@ -91,7 +94,7 @@
                                                                                     inbox
                                                                                 </span>
                                                                                 <span class="badges badges-rounded badges-sm text-capitalize mx-mail-box__badge ms-auto">
-                                                                                    6
+                                                                                    0
                                                                                 </span>
                                                                             </a>
                                                                         </li>
@@ -104,7 +107,7 @@
                                                                                     draft
                                                                                 </span>
                                                                                 <span class="badges badges-rounded badges-sm text-capitalize mx-mail-box__badge ms-auto">
-                                                                                    3
+                                                                                    0
                                                                                 </span>
                                                                             </a>
                                                                         </li>
@@ -114,10 +117,10 @@
                                                                                     <i class="lar la-star"></i>
                                                                                 </span>
                                                                                 <span class="sm-text text-capitalize t-text-primary">
-                                                                                    favorite
+                                                                                    starred
                                                                                 </span>
                                                                                 <span class="badges badges-rounded badges-sm text-capitalize mx-mail-box__badge ms-auto">
-                                                                                    46
+                                                                                    0
                                                                                 </span>
                                                                             </a>
                                                                         </li>
@@ -144,23 +147,23 @@
                                                                         <li class="mx-mail-box__list-item">
                                                                             <a href="#" class="t-link mx-mail-box__link">
                                                                                 <span class="mx-mail-box__icon">
-                                                                                    <i class="las la-recycle"></i>
+                                                                                    <i class="las la-exclamation-triangle"></i>
                                                                                 </span>
                                                                                 <span class="sm-text text-capitalize t-text-primary">
-                                                                                    junk
+                                                                                    spam
+                                                                                </span>
+                                                                                <span class="badges badges-rounded badges-sm text-capitalize mx-mail-box__badge ms-auto">
+                                                                                    0
                                                                                 </span>
                                                                             </a>
                                                                         </li>
                                                                         <li class="mx-mail-box__list-item">
                                                                             <a href="#" class="t-link mx-mail-box__link">
                                                                                 <span class="mx-mail-box__icon">
-                                                                                    <i class="las la-ban"></i>
+                                                                                    <i class="las la-atom"></i>
                                                                                 </span>
                                                                                 <span class="sm-text text-capitalize t-text-primary">
-                                                                                    spam
-                                                                                </span>
-                                                                                <span class="badges badges-rounded badges-sm text-capitalize mx-mail-box__badge ms-auto">
-                                                                                    57
+                                                                                    all mails
                                                                                 </span>
                                                                             </a>
                                                                         </li>
@@ -175,7 +178,7 @@
                                                                     <ul class="t-list mx-mail-box__list">
                                                                         <li class="mx-mail-box__list-item">
                                                                             <a href="#" class="t-link mx-mail-box__link">
-                                                                                <span class="mx-bullet mx-bullet--primary t-mr-15"></span>
+                                                                                <span class="las la-business-time t-mr-15"></span>
                                                                                 <span class="sm-text text-capitalize t-text-primary">
                                                                                     business
                                                                                 </span>
@@ -183,7 +186,7 @@
                                                                         </li>
                                                                         <li class="mx-mail-box__list-item">
                                                                             <a href="#" class="t-link mx-mail-box__link">
-                                                                                <span class="mx-bullet mx-bullet--warning t-mr-15"></span>
+                                                                                <span class="las la-user-friends t-mr-15"></span>
                                                                                 <span class="sm-text text-capitalize t-text-primary">
                                                                                     social
                                                                                 </span>
@@ -191,7 +194,7 @@
                                                                         </li>
                                                                         <li class="mx-mail-box__list-item">
                                                                             <a href="#" class="t-link mx-mail-box__link">
-                                                                                <span class="mx-bullet mx-bullet--danger t-mr-15"></span>
+                                                                                <span class="las la-user t-mr-15"></span>
                                                                                 <span class="sm-text text-capitalize t-text-primary">
                                                                                     personal
                                                                                 </span>
@@ -374,9 +377,7 @@
                                                                     <a href="#" class="t-link mx-mail-box__link">
                                                                         <div class="messages__msg flex-wrap">
                                                                             <div class="messages__avatar messages__avatar-empty t-bg-alpha">
-                                                                                <div class="messages__avatar-replacer text-uppercase">
-                                                                                    as
-                                                                                </div>
+                                                                                <img src="https://ipfs.io/ipfs/QmPyro1Lg6HFFNpphweZc7YJx19x614C6JKATFRS7SzpGP" style="height: 40px;width: 40px">
                                                                                 <div class="messages__avatar-notification messages__avatar-notification--active"></div>
                                                                             </div>
                                                                             <div class="messages__content messages__content--unseen">
@@ -390,13 +391,16 @@
                                                                                     </span>
                                                                                 </div>
                                                                                 <div class="messages__content-body">
-                                                                                    <span class="messages__preview text-capitalize t-text-heading">
-                                                                                        It is a long established fact that a reader will be distracted.
+                                                                                    <span class="messages__preview text-capitalize t-text-heading" style="width: 280px">
+                                                                                        It is a long established facta
                                                                                     </span>
                                                                                     <ul class="t-list d-flex align-items-center">
+                                                                                        <li>
+                                                                                            <img src="assets/img/stamp.jpg" style="height: 35px;width: 31px;margin-right: 3px;">
+                                                                                        </li>
                                                                                         <li class="t-mr-3">
                                                                                             <span class="sm-text">
-                                                                                                <i class="las la-paperclip"></i>
+                                                                                                <i class="las la-paperclip" style="margin-right: 1px"></i>
                                                                                             </span>
                                                                                         </li>
                                                                                         <li>
@@ -920,7 +924,6 @@
                                                                                             </span>
                                                                                         </li>
                                                                                     </ul>
-
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1075,40 +1078,7 @@
     </div>
     <!-- Page Wrapper End -->
 
-    <!-- jquery -->
-<!--    <script src="assets/js/jquery.js"></script>-->
-    <script src="assets/js/jquery-ui.min.js"></script>
-
-    <!-- Date and Time  -->
-    <script src="assets/js/moment.js"></script>
-    <script src="assets/js/bootstrap-material-datetimepicker.js"></script>
-
-    <!-- Bootstrap -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <!-- Slick Slider  -->
-    <script src="assets/js/slick.min.js"></script>
-    <!-- Owl carousel -->
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <!-- simplebar -->
     <script src="assets/js/simplebar.js"></script>
-    <!-- Prism JS  -->
-    <script src="assets/js/prism.js"></script>
-    <!-- Feather Icon  -->
-    <script src="assets/js/feather.js"></script>
-    <!-- Nice Select  -->
-    <script src="assets/js/jquery.nice-select.min.js"></script>
-    <!-- Dropzone  -->
-    <script src="assets/js/dropzone.js"></script>
-    <!-- ION Range Slider  -->
-    <script src="assets/js/ion.rangeSlider.js"></script>
-    <!-- Touchspin  -->
-    <script src="assets/js/jquery.bootstrap-touchspin.min.js"></script>
-    <!-- Rating Bar -->
-    <script src="assets/js/jquery.barrating.min.js"></script>
-    <!-- Calendar  -->
-    <script src="assets/js/fullcalendar.min.js"></script>
-    <!-- Main script -->
-    <script src="assets/js/main.js"></script>
     <script src="assets/js/stamp_big_view.js"></script>
 <script src="assets/js/plumen.js"></script>
 </body>
