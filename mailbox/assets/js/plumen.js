@@ -61,17 +61,27 @@
 						zIndex:'999'
 					});
 					$(_this).find(".wx-input").on("focus",function(event) {
-						renders(options.data)
-						$(_this).find(".dataBox").slideDown(10);
+						input();
 					});
 					$(_this).find(".wxSelect_label").on("click",function(event) {
 						$(_this).find(".dataBox").slideToggle(10);
 					});
 					function input(e){
 						var val = $(_this).find("input").val().trim()
-						,data = options.data;
-						renders(data);
-						$(_this).find(".dataBox").slideDown(50);
+							,dataSelect = []
+							,data = options.data;
+						console.log(val);
+						if(val != ""){
+							for(var i in data){
+								if(data[i]['name'].toUpperCase().indexOf(val.toUpperCase()) != -1){
+									dataSelect.push(data[i]);
+								}
+							}
+							renders(dataSelect);
+						}else{
+							renders(data);
+						}
+						$(_this).find(".dataBox").slideDown(10);
 					}
 					$(_this).find("input").eq(0).on("input",input);
 					$(_this).find(".dataList").on("click","li",function(){
