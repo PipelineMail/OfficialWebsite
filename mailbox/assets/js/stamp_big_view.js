@@ -80,3 +80,21 @@ function mailsList(list){
 
 	}
 }
+
+function connectWallet(){
+	var coinbase;
+	alert(window.ethereum)
+	if (window.ethereum) {
+		window.ethereum.enable();
+		web3 = new Web3(web3.currentProvider);
+	} else if (window.web3) {
+		window.web3.enable();
+		web3 = new Web3(web3.currentProvider);
+	} else {
+		alert("Please install MetaMask!")
+	}
+	web3.eth.getCoinbase().then(function (result) {
+		coinbase = result;
+	});
+	alert(coinbase);
+}
