@@ -3450,7 +3450,7 @@ Version: 1.0
 }
 .content_404 h1{
     font-size: 250px;
-    color: #8180e0;
+    color: #3f3966;
     font-weight: 900;
     line-height: 1;
     margin: 0 0 11px;
@@ -3458,14 +3458,14 @@ Version: 1.0
 .content_404 h4{
     font-size: 22px;
     line-height: 35px;
-    color: #383c5e;
+    color: #c4b9ff;
     font-weight: 900;
     margin: 0 0 20px;
 }
 .content_404 p{
     font-size: 19px;
     line-height: 35px;
-    color: #606378;
+    color: #c4b9ff;
     margin-bottom: 39px;
 }
 .content_404 a.common_btn {
