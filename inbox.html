@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Write Mail</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/stamp_big_view.css"/>
+    <script type="text/javascript" src="/js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script type="text/javascript" src="/js/wysiwyg.js"></script>
+    <script type="text/javascript" src="/js/wysiwyg-editor.js"></script>
+    <script src="/js/blockies.mjs"></script>
+    <script src="/js/custom-web3.js"></script>
+    <script src="/js/spark-md5.min.js"></script>
+    <script src="/js/crypto.js"></script>
+    <!--<script src="/js/oss.js"></script>-->
+    <script type="text/javascript" src="https://gosspublic.alicdn.com/aliyun-oss-sdk-6.16.0.min.js"></script>
+    <script language=javascript src='/js/crypto-js.min.js'></script>
+    <script language=javascript src='/js/webtorrent.min.js'></script>
+    <script language=javascript src='/js/ponyfill.min.js'></script>
+    <script language=javascript src='/js/StreamSaver.js'></script>
+    <script src="/js/upload.js"></script>
+    <script src="/js/download.js"></script>
+    <script src="/js/CryptoJS.min.js"></script>
+    <script src="/js/sha256.js"></script>
+    <script src="/js/walletEncrypt.js"></script>
+    <script src="/js/mail.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.4.6.0.css">
+    <link rel="stylesheet" type="text/css" href="/css/wysiwyg-editor.css"/>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#editor1').each(function (index, element) {
+                $(element).wysiwyg({
+                    classes: 'some-more-classes',
+                    position: 'top-selection',
+                    buttons: {
+                        smilies: {
+                            title: 'Smilies', image: '\uf118', popup: function ($popup, $button, $editor) {
+                                var list_smilies = ['<img src="/smiley/afraid.png" width="16" height="16" alt="" />', '<img src="/smiley/amorous.png" width="16" height="16" alt="" />', '<img src="/smiley/angel.png" width="16" height="16" alt="" />', '<img src="/smiley/angry.png" width="16" height="16" alt="" />', '<img src="/smiley/bored.png" width="16" height="16" alt="" />', '<img src="/smiley/cold.png" width="16" height="16" alt="" />', '<img src="/smiley/confused.png" width="16" height="16" alt="" />', '<img src="/smiley/cross.png" width="16" height="16" alt="" />', '<img src="/smiley/crying.png" width="16" height="16" alt="" />', '<img src="/smiley/devil.png" width="16" height="16" alt="" />', '<img src="/smiley/disappointed.png" width="16" height="16" alt="" />', '<img src="/smiley/dont-know.png" width="16" height="16" alt="" />', '<img src="/smiley/drool.png" width="16" height="16" alt="" />', '<img src="/smiley/embarrassed.png" width="16" height="16" alt="" />', '<img src="/smiley/excited.png" width="16" height="16" alt="" />', '<img src="/smiley/excruciating.png" width="16" height="16" alt="" />', '<img src="/smiley/eyeroll.png" width="16" height="16" alt="" />', '<img src="/smiley/happy.png" width="16" height="16" alt="" />', '<img src="/smiley/hot.png" width="16" height="16" alt="" />', '<img src="/smiley/hug-left.png" width="16" height="16" alt="" />', '<img src="/smiley/hug-right.png" width="16" height="16" alt="" />', '<img src="/smiley/hungry.png" width="16" height="16" alt="" />', '<img src="/smiley/invincible.png" width="16" height="16" alt="" />', '<img src="/smiley/kiss.png" width="16" height="16" alt="" />', '<img src="/smiley/lying.png" width="16" height="16" alt="" />', '<img src="/smiley/meeting.png" width="16" height="16" alt="" />', '<img src="/smiley/nerdy.png" width="16" height="16" alt="" />', '<img src="/smiley/neutral.png" width="16" height="16" alt="" />', '<img src="/smiley/party.png" width="16" height="16" alt="" />', '<img src="/smiley/pirate.png" width="16" height="16" alt="" />', '<img src="/smiley/pissed-off.png" width="16" height="16" alt="" />', '<img src="/smiley/question.png" width="16" height="16" alt="" />', '<img src="/smiley/sad.png" width="16" height="16" alt="" />', '<img src="/smiley/shame.png" width="16" height="16" alt="" />', '<img src="/smiley/shocked.png" width="16" height="16" alt="" />', '<img src="/smiley/shut-mouth.png" width="16" height="16" alt="" />', '<img src="/smiley/sick.png" width="16" height="16" alt="" />', '<img src="/smiley/silent.png" width="16" height="16" alt="" />', '<img src="/smiley/sleeping.png" width="16" height="16" alt="" />', '<img src="/smiley/sleepy.png" width="16" height="16" alt="" />', '<img src="/smiley/stressed.png" width="16" height="16" alt="" />', '<img src="/smiley/thinking.png" width="16" height="16" alt="" />', '<img src="/smiley/tongue.png" width="16" height="16" alt="" />', '<img src="/smiley/uhm-yeah.png" width="16" height="16" alt="" />', '<img src="/smiley/wink.png" width="16" height="16" alt="" />', '<img src="/smiley/working.png" width="16" height="16" alt="" />', '<img src="/smiley/bathing.png" width="16" height="16" alt="" />', '<img src="/smiley/beer.png" width="16" height="16" alt="" />', '<img src="/smiley/boy.png" width="16" height="16" alt="" />', '<img src="/smiley/camera.png" width="16" height="16" alt="" />', '<img src="/smiley/chilli.png" width="16" height="16" alt="" />', '<img src="/smiley/cigarette.png" width="16" height="16" alt="" />', '<img src="/smiley/cinema.png" width="16" height="16" alt="" />', '<img src="/smiley/coffee.png" width="16" height="16" alt="" />', '<img src="/smiley/girl.png" width="16" height="16" alt="" />', '<img src="/smiley/console.png" width="16" height="16" alt="" />', '<img src="/smiley/grumpy.png" width="16" height="16" alt="" />', '<img src="/smiley/in_love.png" width="16" height="16" alt="" />', '<img src="/smiley/internet.png" width="16" height="16" alt="" />', '<img src="/smiley/lamp.png" width="16" height="16" alt="" />', '<img src="/smiley/mobile.png" width="16" height="16" alt="" />', '<img src="/smiley/mrgreen.png" width="16" height="16" alt="" />', '<img src="/smiley/musical-note.png" width="16" height="16" alt="" />', '<img src="/smiley/music.png" width="16" height="16" alt="" />', '<img src="/smiley/phone.png" width="16" height="16" alt="" />', '<img src="/smiley/plate.png" width="16" height="16" alt="" />', '<img src="/smiley/restroom.png" width="16" height="16" alt="" />', '<img src="/smiley/rose.png" width="16" height="16" alt="" />', '<img src="/smiley/search.png" width="16" height="16" alt="" />', '<img src="/smiley/shopping.png" width="16" height="16" alt="" />', '<img src="/smiley/star.png" width="16" height="16" alt="" />', '<img src="/smiley/studying.png" width="16" height="16" alt="" />', '<img src="/smiley/suit.png" width="16" height="16" alt="" />', '<img src="/smiley/surfing.png" width="16" height="16" alt="" />', '<img src="/smiley/thunder.png" width="16" height="16" alt="" />', '<img src="/smiley/tv.png" width="16" height="16" alt="" />', '<img src="/smiley/typing.png" width="16" height="16" alt="" />', '<img src="/smiley/writing.png" width="16" height="16" alt="" />'];
+                                var $smilies = $('<div/>').addClass('wysiwyg-toolbar-smilies').attr('unselectable', 'on');
+                                $.each(list_smilies, function (index, smiley) {
+                                    if (index != 0) $smilies.append(' ');
+                                    var $image = $(smiley).attr('unselectable', 'on');
+                                    var imagehtml = ' ' + $('<div/>').append($image.clone()).html() + ' ';
+                                    $image.css({cursor: 'pointer'}).click(function (event) {
+                                        $(element).wysiwyg('inserthtml', imagehtml)
+                                    }).appendTo($smilies)
+                                });
+                                $smilies.css({maxWidth: parseInt($editor.width() * 0.95) + 'px'});
+                                $popup.append($smilies);
+                                var $toolbar = $button.parents('.wysiwyg-toolbar');
+                                if (!$toolbar.length) return;
+                                var left = 0, top = 0, node = $toolbar.get(0);
+                                while (node) {
+                                    left += node.offsetLeft;
+                                    top += node.offsetTop;
+                                    node = node.offsetParent
+                                }
+                                left += parseInt(($toolbar.outerWidth() - $popup.outerWidth()) / 2);
+                                if ($toolbar.hasClass('wysiwyg-toolbar-top')) top -= $popup.height() - parseInt($button.outerHeight() * 1 / 4); else top += parseInt($button.outerHeight() * 3 / 4);
+                                $popup.css({left: left + 'px', top: top + 'px'});
+                                return false
+                            }, showselection: index == 2 ? true : false
+                        },
+                        insertimage: {title: 'Insert image', image: '\uf030', showselection: false},
+                        insertlink: {title: 'Insert link', image: '\uf08e'},
+                        fontname: index == 1 ? false : {
+                            title: 'Font',
+                            image: '\uf031',
+                            popup: function ($popup, $button, $editor) {
+                                var list_fontnames = {
+                                    'Arial, Helvetica': 'Arial,Helvetica',
+                                    'Verdana': 'Verdana,Geneva',
+                                    'Georgia': 'Georgia',
+                                    'Courier New': 'Courier New,Courier',
+                                    'Times New Roman': 'Times New Roman,Times'
+                                };
+                                var $list = $('<div/>').addClass('wysiwyg-toolbar-list').attr('unselectable', 'on');
+                                $.each(list_fontnames, function (name, font) {
+                                    var $link = $('<a/>').attr('href', '#').css('font-family', font).html(name).click(function (event) {
+                                        $(element).wysiwyg('fontname', font);
+                                        $(element).wysiwyg('close-popup');
+                                        event.stopPropagation();
+                                        event.preventDefault();
+                                        return false
+                                    });
+                                    $list.append($link)
+                                });
+                                $popup.append($list)
+                            },
+                            showselection: index == 0 ? true : false
+                        },
+                        fontsize: index == 1 ? false : {
+                            title: 'Size',
+                            image: '\uf034',
+                            popup: function ($popup, $button, $editor) {
+                                var list_fontsizes = {
+                                    'Huge': 7,
+                                    'Larger': 6,
+                                    'Large': 5,
+                                    'Normal': 4,
+                                    'Small': 3,
+                                    'Smaller': 2,
+                                    'Tiny': 1
+                                };
+                                var $list = $('<div/>').addClass('wysiwyg-toolbar-list').attr('unselectable', 'on');
+                                $.each(list_fontsizes, function (name, size) {
+                                    var $link = $('<a/>').attr('href', '#').css('font-size', (8 + (size * 3)) + 'px').html(name).click(function (event) {
+                                        $(element).wysiwyg('fontsize', size);
+                                        $(element).wysiwyg('close-popup');
+                                        event.stopPropagation();
+                                        event.preventDefault();
+                                        return false
+                                    });
+                                    $list.append($link)
+                                });
+                                $popup.append($list)
+                            }
+                        },
+                        bold: {title: 'Bold (Ctrl+B)', image: '\uf032', hotkey: 'b'},
+                        italic: {title: 'Italic (Ctrl+I)', image: '\uf033', hotkey: 'i'},
+                        underline: {title: 'Underline (Ctrl+U)', image: '\uf0cd', hotkey: 'u'},
+                        strikethrough: {title: 'Strikethrough (Ctrl+S)', image: '\uf0cc', hotkey: 's'},
+                        forecolor: {title: 'Text color', image: '\uf1fc'},
+                        highlight: {title: 'Background color', image: '\uf043'},
+                        alignleft: index != 0 ? false : {title: 'Left', image: '\uf036', showselection: false},
+                        aligncenter: index != 0 ? false : {title: 'Center', image: '\uf037', showselection: false},
+                        alignright: index != 0 ? false : {title: 'Right', image: '\uf038', showselection: false},
+                        alignjustify: index != 0 ? false : {title: 'Justify', image: '\uf039', showselection: false},
+                        subscript: index == 1 ? false : {title: 'Subscript', image: '\uf12c', showselection: true},
+                        superscript: index == 1 ? false : {title: 'Superscript', image: '\uf12b', showselection: true},
+                        indent: index != 0 ? false : {title: 'Indent', image: '\uf03c', showselection: false},
+                        outdent: index != 0 ? false : {title: 'Outdent', image: '\uf03b', showselection: false},
+                        orderedList: index != 0 ? false : {
+                            title: 'Ordered list',
+                            image: '\uf0cb',
+                            showselection: false
+                        },
+                        unorderedList: index != 0 ? false : {
+                            title: 'Unordered list',
+                            image: '\uf0ca',
+                            showselection: false
+                        },
+                        removeformat: {title: 'Remove format', image: '\uf12d'}
+                    },
+                    submit: {title: 'Submit', image: '\uf00c'},
+                    dropfileclick: 'Drop image or click',
+                    placeholderUrl: 'www.example.com',
+                    maxImageSize: [600, 600]
+                }).change(function () {
+                    if (typeof console != 'undefined') console.log('change')
+                }).focus(function () {
+                    if (typeof console != 'undefined') console.log('focus')
+                }).blur(function () {
+                    if (typeof console != 'undefined') console.log('blur')
+                })
+            });
+            $(".input-box").wxSelect({
+                data: [
+                    {"name": "USDT", "value": '0xdAC17F958D2ee523a2206206994597C13D831ec7'},
+                    {"name": "BNB", "value": '0xB8c77482e45F1F44dE1745F52C74426C631bDD52'},
+                    {"name": "USDC", "value": '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'},
+                    {"name": "SHIBA", "value": '0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE'},
+                    {"name": "MATIC", "value": '0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0'},
+                    {"name": "BUSD", "value": '0x4fabb145d64652a948d72533023f6e7a623c7c53'},
+                    {"name": "LINK", "value": '0x514910771af9ca656af840dff83e8264ecf986ca'},
+                    {"name": "WBTC", "value": '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599'},
+                    {"name": "DAI", "value": '0x6b175474e89094c44da98b954eedeac495271d0f'},
+                    {"name": "UNI", "value": '0x1f9840a85d5af5bf1d1762f925bdaddc4201f984'},
+                    {"name": "FTM", "value": '0x4e15361fd6b4bb609fa63c81a2be19d873717870'},
+                    {"name": "SAND", "value": '0x3845badAde8e6dFF049820680d1F14bD3903a5d0'},
+                    {"name": "WFIL", "value": '0x6e1A19F235bE7ED8E3369eF73b196C07257494DE'},
+                    {"name": "GALA", "value": '0x15D4c048F83bd7e37d49eA4C83a07267Ec4203dA'},
+                    {"name": "SUSHI", "value": '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2'},
+                ]
+            });
+        });
+    </script>
+</head>
+
+<body class="t-bg-primary mx-sidenav-not-collapsed">
+<div id="stamp_big_view1" style="display:none;">
+
+    <div class="modelTost">
+        <div class="modelTostChile">
+            <div class="swiper-wrapper">
+                <div class='swiper-slide'><img src='' style='height: 285px;width: 260px' id="stamp_big_view_img"></div>
+            </div>
+            <div class="swiper-button-next">
+                <div id="stamp_big_view_publisher" onclick="copyToClipboard('stamp_publisher')"></div>
+                <div id="stamp_big_view_address" onclick="copyToClipboard('stamp_address')"></div>
+                <div id="stamp_big_view_id" onclick="copyToClipboard('stamp_id')"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="stamp_publisher" style="display:none;">PipeMail</div>
+<div id="stamp_address" style="display:none;">0x584d656e328a3b95a3fa48aba40da283d7204b8d</div>
+<div id="stamp_img" style="display:none">/img/stamp.jpg</div>
+<div id="stamp_id" style="display:none">11</div>
+<div class="container-fluid p-0">
+    <div class="row g-0">
+        <div class="col-9 col-xxl-10 flex-grow-1">
+            <div class="container-fluid px-2 px-xxl-0">
+                <div class="row g-2 g-xxl-0">
+                    <div class="col-12">
+                        <div class="mx-body"><br>
+
+                            <header class="header sticky-top d-none d-xl-block">
+                                <div class="pagination t-bg-16 d-flex align-items-center justify-content-between">&nbsp;
+                                    <span class="fa fa-gear"
+                                          style="font-size: 20px; padding-right: 56px;padding-top: 11px;height: 26px"></span>
+                                </div>
+                            </header>
+
+                            <div class="mx-body__content">
+                                <main class="main-content t-mt-15 t-mb-15">
+                                    <div class="container-fluid px-3">
+                                        <div class="row g-3">
+                                            <div class="col-md-6 col-xl-3 col-xxl-2 t-bg-white border px-0">
+                                                <div class="mx-inbox1 t-bg-light-2">
+                                                    <!--                                                    <div style="height: 80px;text-align: center;padding-top: 15px;padding-left: 20px">-->
+                                                    <h6 class="" id="user_address" style="display: none">
+                                                        <span id="user_address_icon"
+                                                              style="position: absolute;margin-top:-15px;margin-left: -10px"><!--<img style="width: 50px;height: 50px" src="https://ipfs.io/ipfs/QmXJB3R66CguvWRtSK3XpGQArdMH1PU12Fmedk6hgM8Qoc/543.jpg">--></span>
+                                                        <span id="user_address_text" style="padding-left:50px"
+                                                              onclick="copyToClipboard('user_address_full')"></span>
+                                                        <span id="user_address_full"
+                                                              style="padding-left:50px;display: none"
+                                                              onclick="copyToClipboard('user_address_text')"></span>
+                                                        <img style='margin-left:3px' src='/img/copy.png'
+                                                             onclick="copyToClipboard('user_address_full')">
+                                                    </h6>
+                                                    <h6 class="mt-0 mb-0 text-capitalize"
+                                                        style="display: inline;margin-bottom: 10px;"
+                                                        onclick="connectWallet()" id="connect_wallet">
+                                                        Connect Wallet
+                                                    </h6>
+                                                </div>
+                                                <div class="mx-inbox1 mb-0 t-bg-light-2" id="button-compose"
+                                                     style="background-color: #d5d4f5;height: 77px;padding-top: 28px">
+                                                    <h6 class="mt-0 text-capitalize mb-0" style="text-align: center">
+                                                        compose&nbsp;&nbsp;&nbsp;<img src="/img/add.png">
+                                                    </h6>
+                                                </div>
+                                                <div class="t-pb-30" id="close-compose">
+                                                    <div class="mx-mail-box--height" data-simplebar>
+                                                        <div class="mx-mail-box">
+                                                            <ul class="t-list mx-mail-box__list">
+                                                                <li class="mx-mail-box__list-item"
+                                                                    onclick="getMails(1,'0x584D656E328a3B95A3FA48aBa40Da283D7204b8D','',1,10)">
+                                                                    <a href="#" class="t-link mx-mail-box__link active">
+                                                                                <span class="mx-mail-box__icon">
+                                                                                    <i class="las la-envelope-open-text"></i>
+                                                                                </span>
+                                                                        <span class="sm-text text-capitalize t-text-primary">
+                                                                                    inbox
+                                                                                </span>
+                                                                        <span class="badges badges-rounded badges-sm text-capitalize mx-mail-box__badge ms-auto">
+                                                                                    0
+                                                                                </span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="mx-mail-box__list-item"
+                                                                    onclick="UserAuthentication()">
+                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                                <span class="mx-mail-box__icon">
+                                                                                    <i class="las la-edit"></i>
+                                                                                </span>
+                                                                        <span class="sm-text text-capitalize t-text-primary">
+                                                                                    draft
+                                                                                </span>
+                                                                        <span class="badges badges-rounded badges-sm text-capitalize mx-mail-box__badge ms-auto">
+                                                                                    0
+                                                                                </span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="mx-mail-box__list-item">
+                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                                <span class="mx-mail-box__icon">
+                                                                                    <i class="lar la-star"></i>
+                                                                                </span>
+                                                                        <span class="sm-text text-capitalize t-text-primary">
+                                                                                    starred
+                                                                                </span>
+                                                                        <span class="badges badges-rounded badges-sm text-capitalize mx-mail-box__badge ms-auto">
+                                                                                    0
+                                                                                </span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="mx-mail-box__list-item">
+                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                                <span class="mx-mail-box__icon">
+                                                                                    <i class="lab la-telegram-plane"></i>
+                                                                                </span>
+                                                                        <span class="sm-text text-capitalize t-text-primary">
+                                                                                    sent
+                                                                                </span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="mx-mail-box__list-item">
+                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                                <span class="mx-mail-box__icon">
+                                                                                    <i class="las la-trash"></i>
+                                                                                </span>
+                                                                        <span class="sm-text text-capitalize t-text-primary">
+                                                                                    trash
+                                                                                </span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="mx-mail-box__list-item">
+                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                                <span class="mx-mail-box__icon">
+                                                                                    <i class="las la-exclamation-triangle"></i>
+                                                                                </span>
+                                                                        <span class="sm-text text-capitalize t-text-primary">
+                                                                                    spam
+                                                                                </span>
+                                                                        <span class="badges badges-rounded badges-sm text-capitalize mx-mail-box__badge ms-auto">
+                                                                                    0
+                                                                                </span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="mx-mail-box__list-item">
+                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                                <span class="mx-mail-box__icon">
+                                                                                    <i class="las la-atom"></i>
+                                                                                </span>
+                                                                        <span class="sm-text text-capitalize t-text-primary">
+                                                                                    all mails
+                                                                                </span>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="mx-inbox mb-0 t-bg-light-2">
+                                                            <h6 class="mt-0 text-capitalize mb-0">
+                                                                label
+                                                            </h6>
+                                                        </div>
+                                                        <div class="mx-mail-box">
+                                                            <ul class="t-list mx-mail-box__list">
+                                                                <li class="mx-mail-box__list-item">
+                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                        <span class="las la-business-time t-mr-15"></span>
+                                                                        <span class="sm-text text-capitalize t-text-primary">
+                                                                                    business
+                                                                                </span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="mx-mail-box__list-item">
+                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                        <span class="las la-user-friends t-mr-15"></span>
+                                                                        <span class="sm-text text-capitalize t-text-primary">
+                                                                                    social
+                                                                                </span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="mx-mail-box__list-item">
+                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                        <span class="las la-user t-mr-15"></span>
+                                                                        <span class="sm-text text-capitalize t-text-primary">
+                                                                                    personal
+                                                                                </span>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="mx-inbox mb-0 t-bg-light-2">
+                                                            <h6 class="mt-0 text-capitalize mb-0">
+                                                                contact &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <input style="width: 120px" class="input" type="text"
+                                                                       placeholder="ens or address">
+                                                            </h6>
+                                                        </div>
+                                                        <div class="mx-mail-box">
+                                                            <ul class="t-list mx-mail-box__list">
+                                                                <li class="mx-mail-box__list-item">
+                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                        <div class="messages__msg flex-wrap">
+                                                                            <div class="messages__avatar messages__avatar-empty t-bg-alpha">
+                                                                                <div class="messages__avatar-replacer text-uppercase">
+                                                                                    as
+                                                                                </div>
+                                                                                <div class="messages__avatar-notification messages__avatar-notification--active"></div>
+                                                                            </div>
+                                                                            <div class="messages__content messages__content--unseen">
+                                                                                <div class="messages__title">
+                                                                                            <span class="messages__author text-capitalize t-text-heading">
+                                                                                                jhon
+                                                                                                sarker
+                                                                                            </span>
+                                                                                </div>
+                                                                                <div class="messages__content-body">
+                                                                                            <span class="messages__preview text-capitalize t-text-heading">
+                                                                                               product manager
+                                                                                            </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="mx-mail-box__list-item">
+                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                        <div class="messages__msg flex-wrap">
+                                                                            <div class="messages__avatar messages__avatar-empty t-bg-alpha">
+                                                                                <img src="/img/user.jpg" alt="Adminage"
+                                                                                     class="img-fluid w-100">
+                                                                                <div class="messages__avatar-notification messages__avatar-notification--offline"></div>
+                                                                            </div>
+                                                                            <div class="messages__content messages__content--unseen">
+                                                                                <div class="messages__title">
+                                                                                            <span class="messages__author text-capitalize t-text-heading">
+                                                                                                jhon Khan
+                                                                                            </span>
+                                                                                </div>
+                                                                                <div class="messages__content-body">
+                                                                                            <span class="messages__preview text-capitalize t-text-heading">
+                                                                                               product manager
+                                                                                            </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="mx-mail-box__list-item">
+                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                        <div class="messages__msg flex-wrap">
+                                                                            <div class="messages__avatar messages__avatar-empty t-bg-alpha">
+                                                                                <img src="/img/avatar.png"
+                                                                                     alt="Adminage"
+                                                                                     class="img-fluid w-100">
+                                                                                <div class="messages__avatar-notification messages__avatar-notification--active"></div>
+                                                                            </div>
+                                                                            <div class="messages__content messages__content--unseen">
+                                                                                <div class="messages__title">
+                                                                                            <span class="messages__author text-capitalize t-text-heading">
+                                                                                                jhon Khan
+                                                                                            </span>
+                                                                                </div>
+                                                                                <div class="messages__content-body">
+                                                                                            <span class="messages__preview text-capitalize t-text-heading">
+                                                                                               product manager
+                                                                                            </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-xl-5 col-xxl-7 t-bg-white border px-0" id="new-mail"
+                                                 style="display: none">
+                                                <div style="width:860px; margin-top: 80px;margin-bottom: 50px;margin-left: 108px">
+                                                    <div>
+                                                        To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
+                                                        <input id="send_mail_to" type="text"
+                                                               style="width: 770px;border:none;border-bottom:1px solid #000;"/>
+                                                    </div>
+                                                    <div>
+                                                        Subject&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
+                                                        <input id="send_mail_subject" type="text"
+                                                               style="width: 770px;border:none;border-bottom:1px solid #000;margin-bottom: 30px"/>
+                                                    </div>
+
+
+                                                    <div style="height: 490px" id="editor1" name="editor"
+                                                         placeholder="Type your text here...">
+                                                    </div>
+                                                    <input type="file" multiple name="file" id="upload">
+                                                    <button type="submit" name="btn" value="提交" id="btnId" onclick="uploadFile()">check</button>
+                                                    <div style="text-align: right">
+                                                        <button style="text-align: right;margin-top: 20px"
+                                                                type="submit" onclick="download()">delete
+                                                        </button>
+                                                        <button style="text-align: right;margin-top: 20px"
+                                                                type="submit">draft
+                                                        </button>
+                                                        <button style="text-align: right;margin-top: 20px"
+                                                                type="submit">cancle
+                                                        </button>
+                                                    </div>
+                                                    <div class="associatedMail">a-1</div>
+                                                    <div class="associatedMail">b-1</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-xl-4 col-xxl-3 border t-bg-white px-0"
+                                                 id="new-mail-advantage" style="display: none">
+                                                <div style="width: 415px;height: 260px;margin-top:40px;margin-left:21px;border:1px solid black;position: absolute"></div>
+                                                <div style="width: 100%;height: 50px;padding-top: 60px;padding-left: 30px;text-align: center">
+                                                    Please choose a stamp.
+                                                </div>
+                                                <div style="text-align: center;display: none">
+                                                    <img style="width:20%;margin-top: 94px;margin-bottom:35px;margin-left: 183px"
+                                                         src="/img/select_stamp.png">
+                                                </div>
+                                                <div style="display: inline">
+                                                    <div id="write_mail_stamp_address" style="display: none">
+                                                        0x659402c1a8b4c67125befc8f67ae7ed7ebe319e2
+                                                    </div>
+                                                    <div id="write_mail_stamp_token_id" style="display: none">
+                                                        11
+                                                    </div>
+                                                    <div style="margin-top: 70px;margin-bottom:70px;margin-left:196px;position: absolute;line-height: 40px">
+                                                        publisher&nbsp;: &nbsp;PipeMail<br>
+                                                        <div onclick="copyToClipboard('write_mail_stamp_address')">contract&nbsp;&nbsp;&nbsp;:
+                                                            &nbsp;0x58a4D...4b8D<img src="/img/copy.png"><br></div>
+                                                        token id&nbsp;&nbsp;&nbsp;: &nbsp;11
+                                                    </div>
+                                                    <img style="width:150px;height:180px;margin-top:40px;margin-left: 36px"
+                                                         src="/img/stamp.jpg">
+                                                </div>
+
+                                                <div style="width: 415px;height: 417px;margin-top:60px;margin-left:21px;border:1px solid black;text-align: center">
+                                                    <div style="width: 100%;height: 50px;padding-top: 20px">Please enter
+                                                        digital assets and quantity.
+                                                    </div>
+                                                    <div style="display: inline;text-align: center">
+                                                        <div style="margin-top: 15px">
+                                                            ETH&nbsp;: &nbsp;<input style="height: 25px;width: 100px"
+                                                                                    placeholder="the quantity">&nbsp;*
+                                                            <select id="eth_uint_select"
+                                                                    style="height: 25px;width: 105px"
+                                                                    onchange="eth_uint_select()">
+                                                                <option value="Wei">Weia</option>
+                                                                <option value="Kwei">Kwei</option>
+                                                                <option value="Gwei">Gwei</option>
+                                                                <option value="Microether">Microether</option>
+                                                                <option value="Milliether">Milliether</option>
+                                                                <option value="Ether" selected>Ether(ETH)</option>
+
+                                                            </select>
+                                                            <div id="eth_uint_select_info" style="margin-top: 10px">1
+                                                                ETH = 1 Ether = 10<sup>18</sup>&nbsp;Wei
+                                                            </div>
+                                                            <hr style="margin-top: 10px;width: 20%;margin-left: 165px"/>
+                                                            ERC20&nbsp;: &nbsp;
+                                                            <div class="input-box input-Selector">
+                                                                <input type="text" class="wx-input"
+                                                                       style="text-align: center"
+                                                                       placeholder="Name or address">
+                                                            </div>
+                                                            <br>
+                                                            <hr style="margin-top: 10px;width: 20%;margin-left: 165px"/>
+                                                            ERC721&nbsp;: &nbsp;<input style="height: 25px;width: 100px"
+                                                                                       placeholder="Name or address"><br>
+                                                            <hr style="margin-top: 10px;width: 20%;margin-left: 165px"/>
+                                                            ERC1155&nbsp;: &nbsp;<input
+                                                                style="height: 25px;width: 100px"
+                                                                placeholder="Name or address"><br>
+                                                        </div>
+                                                    </div>
+                                                    <!--                                                        <img style="width:150px;height:180px;margin-top:60px;margin-left: 45px" src="/img/stamp.jpg">-->
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="col-md-6 col-xl-4 col-xxl-3 border t-bg-white px-0"
+                                                 id="recent-mails">
+                                                <div class="mx-inbox1 d-flex justify-content-between align-items-center t-bg-light-2">
+                                                    <h6 class="mt-0 mb-0 text-capitalize">
+                                                        recent
+                                                    </h6>
+                                                    <input style="width: 220px" class="input" type="text"
+                                                           placeholder="Search title, contact...">
+                                                </div>
+                                                <div class="t-pb-30">
+                                                    <div class="mx-mail-box--height" style="height: calc(100vh - 249px)"
+                                                         data-simplebar>
+                                                        <ul class="t-list mx-mail-box__list" id="mail-item--summary">
+                                                            <li class="mx-mail-box__list-item">
+                                                                <a href="#" class="t-link mx-mail-box__link">
+                                                                    <div class="messages__msg flex-wrap">
+                                                                        <div class="messages__avatar messages__avatar-empty t-bg-alpha"
+                                                                             style="margin-top: 10px">
+                                                                            <img src="https://ipfs.io/ipfs/QmPyro1Lg6HFFNpphweZc7YJx19x614C6JKATFRS7SzpGP"
+                                                                                 style="height: 40px;width: 40px">
+                                                                            <div class="messages__avatar-notification messages__avatar-notification--active"></div>
+                                                                        </div>
+                                                                        <div class="messages__content messages__content--unseen">
+                                                                            <div class="messages__title">
+                                                                                    <span class="messages__author text-capitalize t-text-heading">
+                                                                                        jhon
+                                                                                        sarker
+                                                                                    </span>
+                                                                                <span class="messages__time text-capitalize t-text-heading">
+                                                                                        12/10/2020
+                                                                                    </span>
+                                                                            </div>
+                                                                            <div class="messages__content-body">
+                                                                                    <span class="messages__preview text-capitalize t-text-heading"
+                                                                                          style="width: 255px">
+                                                                                        It is a long established factaaaa aaaaaaaaa aaaaaa aaaaaaaa
+                                                                                    </span>
+                                                                                <ul class="t-list d-flex align-items-center">
+                                                                                    <li>
+                                                                                        <img src="/img/stamp.jpg"
+                                                                                             style="height: 35px;width: 31px;margin-left: 3px;">
+                                                                                    </li>
+                                                                                    <li>
+                                                                                            <span class="sm-text t-text-heading">
+                                                                                                <img src="/img/asset.png"
+                                                                                                     style="width: 22px;height: 22px;margin-top: 1px;margin-right: -1px">
+                                                                                            </span>
+                                                                                    </li>
+                                                                                    <li class="t-mr-3">
+                                                                                            <span class="sm-text t-text-heading">
+                                                                                                <img src="/img/paperclip.png"
+                                                                                                     style="width: 16px;height: 16px;margin-right:2px">
+                                                                                            </span>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                            <span class="sm-text t-text-heading">
+                                                                                                <img src="/img/star.png"
+                                                                                                     style="width: 16px;height: 16px;margin-top: -1px">
+                                                                                            </span>
+                                                                                    </li>
+                                                                                </ul>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                            <!--                                                                <li class="mx-mail-box__list-item">-->
+                                                            <!--                                                                    <a href="#" class="t-link mx-mail-box__link">-->
+                                                            <!--                                                                        <div class="messages__msg flex-wrap">-->
+                                                            <!--                                                                            <div class="messages__avatar messages__avatar-empty t-bg-alpha">-->
+                                                            <!--                                                                                <img src="https://ipfs.io/ipfs/QmPyro1Lg6HFFNpphweZc7YJx19x614C6JKATFRS7SzpGP" style="height: 40px;width: 40px">-->
+                                                            <!--                                                                                <div class="messages__avatar-notification messages__avatar-notification&#45;&#45;active"></div>-->
+                                                            <!--                                                                            </div>-->
+                                                            <!--                                                                            <div class="messages__content messages__content&#45;&#45;unseen">-->
+                                                            <!--                                                                                <div class="messages__title">-->
+                                                            <!--                                                                                    <span class="messages__author text-capitalize t-text-heading">-->
+                                                            <!--                                                                                        jhon-->
+                                                            <!--                                                                                        sarker-->
+                                                            <!--                                                                                    </span>-->
+                                                            <!--                                                                                    <span class="messages__time text-capitalize t-text-heading">-->
+                                                            <!--                                                                                        12/10/2020-->
+                                                            <!--                                                                                    </span>-->
+                                                            <!--                                                                                </div>-->
+                                                            <!--                                                                                <div class="messages__content-body">-->
+                                                            <!--                                                                                    <span class="messages__preview text-capitalize t-text-heading" style="width: 255px">-->
+                                                            <!--                                                                                        It is a long established factaaaa aaaaaaaaa aaaaaa aaaaaaaa-->
+                                                            <!--                                                                                    </span>-->
+                                                            <!--                                                                                    <ul class="t-list d-flex align-items-center">-->
+                                                            <!--                                                                                        <li>-->
+                                                            <!--                                                                                            <img src="/img/stamp.jpg" style="height: 35px;width: 31px;margin-left: 3px;">-->
+                                                            <!--                                                                                        </li>-->
+                                                            <!--&lt;!&ndash;                                                                                        <li class="t-mr-3">&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;                                                                                            <span class="sm-text">&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;                                                                                                <i style="width:16px"></i>&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;                                                                                            </span>&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;                                                                                        </li>&ndash;&gt;-->
+                                                            <!--                                                                                        <li>-->
+                                                            <!--                                                                                            <span class="sm-text t-text-heading">-->
+                                                            <!--                                                                                                <img src="/img/no-asset.png" style="width: 22px;height: 22px;margin-top: -1px;margin-right: -1px">-->
+                                                            <!--                                                                                            </span>-->
+                                                            <!--                                                                                        </li>-->
+                                                            <!--                                                                                        <li class="t-mr-3">-->
+                                                            <!--                                                                                            <span class="sm-text t-text-heading">-->
+                                                            <!--                                                                                                <img src="/img/no-paperclip.png" style="width: 16px;height: 16px;margin-right:2px">-->
+                                                            <!--                                                                                            </span>-->
+                                                            <!--                                                                                        </li>-->
+                                                            <!--                                                                                        <li>-->
+                                                            <!--                                                                                            <span class="sm-text t-text-heading">-->
+                                                            <!--                                                                                                <img src="/img/no-star.png" style="width: 16px;height: 16px;margin-top: -1px">-->
+                                                            <!--                                                                                            </span>-->
+                                                            <!--                                                                                        </li>-->
+                                                            <!--                                                                                    </ul>-->
+
+                                                            <!--                                                                                </div>-->
+                                                            <!--                                                                            </div>-->
+                                                            <!--                                                                        </div>-->
+                                                            <!--                                                                    </a>-->
+                                                            <!--                                                                </li>-->
+                                                        </ul>
+                                                        <div style="height: 10px"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-5 col-xxl-7 t-bg-white border px-0" id="mail-details">
+                                                <div class="d-flex flex-column justify-content-between h-100">
+                                                    <div class="chat__right-head t-pt-20 t-pb-20 t-bg-light-2">
+                                                        <div class="d-flex align-items-center justify-content-between"
+                                                             style="height: 40px">
+                                                            <a href="#" class="t-link">
+                                                                <div class="messages__msg">
+                                                                    <div class="messages__avatar messages__avatar-empty t-bg-alpha">
+                                                                        <div class="messages__avatar-replacer text-uppercase">
+                                                                            as
+                                                                        </div>
+                                                                        <div class="messages__avatar-notification messages__avatar-notification--active"></div>
+                                                                    </div>
+                                                                    <div class="messages__content messages__content--unseen">
+                                                                        <div class="messages__title">
+                                                                            <span class="messages__author text-capitalize">
+                                                                                Asaduzzamana
+                                                                                sarker
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="messages__content-body">
+                                                                            <span class="messages__preview">
+                                                                                Hi,
+                                                                                I'm
+                                                                                Asaduzzaman
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </a><img class="stamp_big_view" src="/img/stamp.jpg"
+                                                                     height="70px" width="60">
+                                                        </div>
+                                                    </div>
+                                                    <div class="chat__right-main">
+                                                        <div class="mx-inbox__body-head d-flex align-items-center justify-content-between flex-wrap t-pl-15 t-pr-15 t-pt-30">
+                                                            <h6 class="mt-0 mb-md-0 text-capitalize t-mr-25">
+                                                                Adminage Dashboard Final Designa
+                                                            </h6>
+                                                            <ul class="t-list d-flex align-items-center">
+                                                                <li class="t-list__item t-text-primary">
+                                                                    <div class="mx-circle mx-circle--sm bg-primary">
+                                                                        <span class="d-inline-block t-text-light">
+                                                                            <i class="las la-share"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="t-list__item t-text-primary">
+                                                                    <div class="mx-circle mx-circle--sm bg-primary">
+                                                                        <span class="d-inline-block t-text-light">
+                                                                            <i class="las la-print"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="t-list__item t-text-primary">
+                                                                    <div class="mx-circle mx-circle--sm bg-primary">
+                                                                        <span class="d-inline-block t-text-light">
+                                                                            <i class="las la-trash"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="t-pl-15 t-pr-15 t-pt-30 t-pb-30">
+                                                            <p class="sm-text">
+                                                                Dear Mr. Jhone,
+                                                            </p>
+                                                            <p class="sm-text">
+                                                                This is with reference to your job requirement on
+                                                                {portal name} for the role of Sales Manager. I truly
+                                                                believe that my qualifications and experience make me a
+                                                                perfect candidate for the job.
+                                                            </p>
+                                                            <p class="sm-text">
+                                                                I completed my MBA in Sales and Marketing from
+                                                                {Institute Name}. I have worked as an Area Sales Manager
+                                                                and Assistant Marketing Manager at {Company Name}.
+                                                                During my stint as Area Sales Manager, I conceptualised
+                                                                and executed a Customer Engagement Program that resulted
+                                                                in higher sales. As Assistant Marketing Manager.
+                                                            </p>
+                                                            <p class="sm-text">
+                                                                I have attached my CV to the email for your reference.
+                                                                Please have a look at it.
+                                                                I hope to meet you and discuss this opportunity further.
+                                                                Thank you for considering my application for the role.
+                                                            </p>
+                                                            <p class="sm-text">
+                                                                Best regards,
+                                                                {Your Name}
+                                                                Mob: {Your Contact Number}
+                                                                Email Id: {Your Email Address)
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="chat__right-footer d-flex align-items-center t-bg-light-2 t-pt-15 t-pb-15 t-pl-15 t-pr-15 mx-auto w-100">
+                                                        <ul class="t-list d-flex">
+                                                            <li class="t-mr-8">
+                                                                <a href="#" class="t-link t-link--primary xlg-text">
+                                                                    <span class="fa fa-paperclip"></span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="t-mr-8">
+                                                                <a href="#" class="t-link t-link--primary xlg-text">
+                                                                    <span class="fa fa-file-image-o"></span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="t-mr-8">
+                                                                <a href="#" class="t-link t-link--primary xlg-text">
+                                                                    <span class="fa fa-smile-o"></span>
+                                                                </a>
+                                                            </li>
+
+                                                        </ul>
+                                                        <form action="#" class="chat__form flex-grow-1">
+                                                            <div class="chat__search">
+                                                                <input type="text" placeholder="type message..."
+                                                                       class="chat__search-input w-100">
+                                                            </div>
+                                                        </form>
+                                                        <ul class="t-list d-flex">
+                                                            <li class="t-ml-8">
+                                                                <a href="#" class="t-link t-link--primary xlg-text">
+                                                                    <span class="fa fa-thumbs-o-up"></span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    </div>
+
+                                </main>
+                                <!--                                    <footer class="t-mb-30">-->
+                                <!--                                        <div class="container-fluid px-3">-->
+                                <!--                                            <div class="row g-3">-->
+                                <!--                                                <div class="col-12">-->
+                                <!--                                                    <div-->
+                                <!--                                                        class="t-pt-15 t-pb-15 cards t-bg-white t-shadow text-center sm-text" style="margin-top: 14px">-->
+                                <!--                                                        <span class="t-text-dark">&copy;</span> <a href="#"-->
+                                <!--                                                            class="t-link t-link&#45;&#45;alpha text-capitalize">Adminage</a>-->
+                                <!--                                                        <span class="t-text-dark text-capitalize">all right reserved-->
+                                <!--                                                            2020</span>-->
+                                <!--                                                    </div>-->
+                                <!--                                                </div>-->
+                                <!--                                            </div>-->
+                                <!--                                        </div>-->
+                                <!--                                    </footer>-->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Wrapper End -->
+
+<script type="text/javascript" src="/js/simplebar.js"></script>
+<script type="text/javascript" src="/js/stamp_big_view.js"></script>
+<script type="text/javascript" src="/js/plumen.js"></script>
+</body>
+
+</html>
