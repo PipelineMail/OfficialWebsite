@@ -4,14 +4,14 @@ OfficialWebsite
 [![](https://img.shields.io/badge/made%20by-PipeMail%20Labs-blue.svg?style=flat-square)](http://ipn.io)
 [![](https://img.shields.io/badge/project-PipeMail-blue.svg?style=flat-square)](http://ipfs.io/)
 [![](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
-[![](https://img.shields.io/badge/-HTML-black?style=flat&logo=javascript&logoColor=whit)](http://ipn.io)
+[![](https://img.shields.io/badge/-HTML-black?style=flat&logo=&logoColor=whit)](http://ipn.io)
 [![](https://img.shields.io/badge/-Encrypt-red?style=flat&logo=Text&logoColor=A8B9CC)](http://ipn.io)
 [![](https://img.shields.io/badge/-Protect%20Privacy-red?style=flat&logo=Text&logoColor=A8B9CC)](http://ipn.io)
 [![](https://img.shields.io/badge/-success-success)](http://ipn.io)
 
 
 > This repository contains the front-end code of PipeMail.<br>
-> If you want to see PipeMail's smart contract code, please go [here](https://github.com/PipelineMail/Contracts).
+> If you want to see PipeMail's smart contract code, please click [here](https://github.com/PipelineMail/Contracts).
 
 ## Table of Contents
 
@@ -21,9 +21,9 @@ OfficialWebsite
 - [PipeMail](#PipeMail)
   - [Introduction](#Introduction)
   - [Features ](#Features)
-  - [Target User](#Target User)
+  - [Target-User](#Target-User)
 - [Schedule](#Schedule)
-- [Contact Us](#Contact Us)
+- [Contact-Us](#Contact-Us)
 - [Ending](#Ending)
 
 ## Foreword
@@ -64,7 +64,7 @@ It should be noted that XMail adopts "encryption on the client side, and then up
 - ***Almost No Spam.*** To send a mail with PipeMail, the sender needs to pay for gas. This greatly reduces the amount of spam.
 - ***Mail must be stamped.*** Use NFTs as postage stamps, which may greatly increase the liquidity of NFTs.PipeMail combined with NFT will bring you an unprecedented web3 experience.
 
-### Target User
+### Target-User
 
 - ***Web3 User:*** If you are a web3 user, maybe you need a mail software for communication, preferably a web3 email software.
 - ***Dapp operator:*** If you are a dapp operator, maybe you need a web3-style communication software to communicate with your users.
@@ -74,7 +74,7 @@ It should be noted that XMail adopts "encryption on the client side, and then up
 - PipeMail is being tested on the test network, and the complete test is expected to be around March 20, when it will be officially launched on the main network.
 - Additionally, we have charted the roadmap for the next few releases. After several iterations of these versions, PipeMail will have all the functions of the current mailbox software.
 
-## Contact Us
+## Contact-Us
 - ***Twitter:*** [PipeMailLabs](https://twitter.com/PipeMailLabs)
 - ***Telegram:*** [PipeMail](https://t.me/pipemail)
 
