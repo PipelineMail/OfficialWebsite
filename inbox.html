@@ -6,30 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Write Mail</title>
 
-    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/stamp_big_view.css"/>
-    <script type="text/javascript" src="/js/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/stamp_big_view.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-    <script type="text/javascript" src="/js/wysiwyg.js"></script>
-    <script type="text/javascript" src="/js/wysiwyg-editor.js"></script>
-    <script src="/js/blockies.mjs"></script>
-    <script src="/js/custom-web3.js"></script>
-    <script src="/js/spark-md5.min.js"></script>
-    <script src="/js/crypto.js"></script>
-    <!--<script src="/js/oss.js"></script>-->
+    <script type="text/javascript" src="js/wysiwyg.js"></script>
+    <script type="text/javascript" src="js/wysiwyg-editor.js"></script>
+    <script src="js/blockies.mjs"></script>
+    <script src="js/custom-web3.js"></script>
+    <script src="js/spark-md5.min.js"></script>
+    <script src="js/crypto.js"></script>
+    <!--<script src="js/oss.js"></script>-->
     <script type="text/javascript" src="https://gosspublic.alicdn.com/aliyun-oss-sdk-6.16.0.min.js"></script>
-    <script language=javascript src='/js/crypto-js.min.js'></script>
-    <script language=javascript src='/js/webtorrent.min.js'></script>
-    <script language=javascript src='/js/ponyfill.min.js'></script>
-    <script language=javascript src='/js/StreamSaver.js'></script>
-    <script src="/js/upload.js"></script>
-    <script src="/js/download.js"></script>
-    <script src="/js/CryptoJS.min.js"></script>
-    <script src="/js/sha256.js"></script>
-    <script src="/js/walletEncrypt.js"></script>
-    <script src="/js/mail.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/font-awesome.4.6.0.css">
-    <link rel="stylesheet" type="text/css" href="/css/wysiwyg-editor.css"/>
+    <script language=javascript src='js/crypto-js.min.js'></script>
+    <script language=javascript src='js/webtorrent.min.js'></script>
+    <script language=javascript src='js/ponyfill.min.js'></script>
+    <script language=javascript src='js/StreamSaver.js'></script>
+    <script src="js/upload.js"></script>
+    <script src="js/download.js"></script>
+    <script src="js/CryptoJS.min.js"></script>
+    <script src="js/sha256.js"></script>
+    <script src="js/walletEncrypt.js"></script>
+    <script src="js/mail.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.4.6.0.css">
+    <link rel="stylesheet" type="text/css" href="css/wysiwyg-editor.css"/>
 
     <script type="text/javascript">
         $(function () {
@@ -201,7 +201,7 @@
 </div>
 <div id="stamp_publisher" style="display:none;">PipeMail</div>
 <div id="stamp_address" style="display:none;">0x584d656e328a3b95a3fa48aba40da283d7204b8d</div>
-<div id="stamp_img" style="display:none">/img/stamp.jpg</div>
+<div id="stamp_img" style="display:none">img/stamp.jpg</div>
 <div id="stamp_id" style="display:none">11</div>
 <div class="container-fluid p-0">
     <div class="row g-0">
@@ -211,7 +211,7 @@
                     <div class="col-12">
                         <div class="mx-body"><br>
 
-                            <header class="header sticky-top d-none d-xl-block">
+                            <header class="header sticky-top d-none d-xl-block" onclick="UserAuthentication()">
                                 <div class="pagination t-bg-16 d-flex align-items-center justify-content-between">&nbsp;
                                     <span class="fa fa-gear"
                                           style="font-size: 20px; padding-right: 56px;padding-top: 11px;height: 26px"></span>
@@ -233,7 +233,7 @@
                                                         <span id="user_address_full"
                                                               style="padding-left:50px;display: none"
                                                               onclick="copyToClipboard('user_address_text')"></span>
-                                                        <img style='margin-left:3px' src='/img/copy.png'
+                                                        <img style='margin-left:3px' src='img/copy.png'
                                                              onclick="copyToClipboard('user_address_full')">
                                                     </h6>
                                                     <h6 class="mt-0 mb-0 text-capitalize"
@@ -245,7 +245,7 @@
                                                 <div class="mx-inbox1 mb-0 t-bg-light-2" id="button-compose"
                                                      style="background-color: #d5d4f5;height: 77px;padding-top: 28px">
                                                     <h6 class="mt-0 text-capitalize mb-0" style="text-align: center">
-                                                        compose&nbsp;&nbsp;&nbsp;<img src="/img/add.png">
+                                                        compose&nbsp;&nbsp;&nbsp;<img src="img/add.png">
                                                     </h6>
                                                 </div>
                                                 <div class="t-pb-30" id="close-compose">
@@ -266,8 +266,7 @@
                                                                                 </span>
                                                                     </a>
                                                                 </li>
-                                                                <li class="mx-mail-box__list-item"
-                                                                    onclick="UserAuthentication()">
+                                                                <li class="mx-mail-box__list-item">
                                                                     <a href="#" class="t-link mx-mail-box__link">
                                                                                 <span class="mx-mail-box__icon">
                                                                                     <i class="las la-edit"></i>
@@ -385,67 +384,19 @@
                                                                         <div class="messages__msg flex-wrap">
                                                                             <div class="messages__avatar messages__avatar-empty t-bg-alpha">
                                                                                 <div class="messages__avatar-replacer text-uppercase">
-                                                                                    as
+                                                                                    ps
                                                                                 </div>
                                                                                 <div class="messages__avatar-notification messages__avatar-notification--active"></div>
                                                                             </div>
                                                                             <div class="messages__content messages__content--unseen">
                                                                                 <div class="messages__title">
                                                                                             <span class="messages__author text-capitalize t-text-heading">
-                                                                                                jhon
-                                                                                                sarker
+                                                                                                Piper Shi
                                                                                             </span>
                                                                                 </div>
                                                                                 <div class="messages__content-body">
                                                                                             <span class="messages__preview text-capitalize t-text-heading">
-                                                                                               product manager
-                                                                                            </span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="mx-mail-box__list-item">
-                                                                    <a href="#" class="t-link mx-mail-box__link">
-                                                                        <div class="messages__msg flex-wrap">
-                                                                            <div class="messages__avatar messages__avatar-empty t-bg-alpha">
-                                                                                <img src="/img/user.jpg" alt="Adminage"
-                                                                                     class="img-fluid w-100">
-                                                                                <div class="messages__avatar-notification messages__avatar-notification--offline"></div>
-                                                                            </div>
-                                                                            <div class="messages__content messages__content--unseen">
-                                                                                <div class="messages__title">
-                                                                                            <span class="messages__author text-capitalize t-text-heading">
-                                                                                                jhon Khan
-                                                                                            </span>
-                                                                                </div>
-                                                                                <div class="messages__content-body">
-                                                                                            <span class="messages__preview text-capitalize t-text-heading">
-                                                                                               product manager
-                                                                                            </span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="mx-mail-box__list-item">
-                                                                    <a href="#" class="t-link mx-mail-box__link">
-                                                                        <div class="messages__msg flex-wrap">
-                                                                            <div class="messages__avatar messages__avatar-empty t-bg-alpha">
-                                                                                <img src="/img/avatar.png"
-                                                                                     alt="Adminage"
-                                                                                     class="img-fluid w-100">
-                                                                                <div class="messages__avatar-notification messages__avatar-notification--active"></div>
-                                                                            </div>
-                                                                            <div class="messages__content messages__content--unseen">
-                                                                                <div class="messages__title">
-                                                                                            <span class="messages__author text-capitalize t-text-heading">
-                                                                                                jhon Khan
-                                                                                            </span>
-                                                                                </div>
-                                                                                <div class="messages__content-body">
-                                                                                            <span class="messages__preview text-capitalize t-text-heading">
-                                                                                               product manager
+                                                                                               PipeMail manager
                                                                                             </span>
                                                                                 </div>
                                                                             </div>
@@ -502,7 +453,7 @@
                                                 </div>
                                                 <div style="text-align: center;display: none">
                                                     <img style="width:20%;margin-top: 94px;margin-bottom:35px;margin-left: 183px"
-                                                         src="/img/select_stamp.png">
+                                                         src="img/select_stamp.png">
                                                 </div>
                                                 <div style="display: inline">
                                                     <div id="write_mail_stamp_address" style="display: none">
@@ -514,11 +465,11 @@
                                                     <div style="margin-top: 70px;margin-bottom:70px;margin-left:196px;position: absolute;line-height: 40px">
                                                         publisher&nbsp;: &nbsp;PipeMail<br>
                                                         <div onclick="copyToClipboard('write_mail_stamp_address')">contract&nbsp;&nbsp;&nbsp;:
-                                                            &nbsp;0x58a4D...4b8D<img src="/img/copy.png"><br></div>
+                                                            &nbsp;0x58a4D...4b8D<img src="img/copy.png"><br></div>
                                                         token id&nbsp;&nbsp;&nbsp;: &nbsp;11
                                                     </div>
                                                     <img style="width:150px;height:180px;margin-top:40px;margin-left: 36px"
-                                                         src="/img/stamp.jpg">
+                                                         src="img/stamp.jpg">
                                                 </div>
 
                                                 <div style="width: 415px;height: 417px;margin-top:60px;margin-left:21px;border:1px solid black;text-align: center">
@@ -560,7 +511,7 @@
                                                                 placeholder="Name or address"><br>
                                                         </div>
                                                     </div>
-                                                    <!--                                                        <img style="width:150px;height:180px;margin-top:60px;margin-left: 45px" src="/img/stamp.jpg">-->
+                                                    <!--                                                        <img style="width:150px;height:180px;margin-top:60px;margin-left: 45px" src="img/stamp.jpg">-->
                                                 </div>
 
                                             </div>
@@ -591,38 +542,37 @@
                                                                         <div class="messages__content messages__content--unseen">
                                                                             <div class="messages__title">
                                                                                     <span class="messages__author text-capitalize t-text-heading">
-                                                                                        jhon
-                                                                                        sarker
+                                                                                        Piper Shi
                                                                                     </span>
                                                                                 <span class="messages__time text-capitalize t-text-heading">
-                                                                                        12/10/2020
+                                                                                        3/7/2022
                                                                                     </span>
                                                                             </div>
                                                                             <div class="messages__content-body">
                                                                                     <span class="messages__preview text-capitalize t-text-heading"
                                                                                           style="width: 255px">
-                                                                                        It is a long established factaaaa aaaaaaaaa aaaaaa aaaaaaaa
+                                                                                        Welcome to PipeMail.
                                                                                     </span>
                                                                                 <ul class="t-list d-flex align-items-center">
                                                                                     <li>
-                                                                                        <img src="/img/stamp.jpg"
+                                                                                        <img src="img/stamp.jpg"
                                                                                              style="height: 35px;width: 31px;margin-left: 3px;">
                                                                                     </li>
                                                                                     <li>
                                                                                             <span class="sm-text t-text-heading">
-                                                                                                <img src="/img/asset.png"
+                                                                                                <img src="img/asset.png"
                                                                                                      style="width: 22px;height: 22px;margin-top: 1px;margin-right: -1px">
                                                                                             </span>
                                                                                     </li>
                                                                                     <li class="t-mr-3">
                                                                                             <span class="sm-text t-text-heading">
-                                                                                                <img src="/img/paperclip.png"
+                                                                                                <img src="img/paperclip.png"
                                                                                                      style="width: 16px;height: 16px;margin-right:2px">
                                                                                             </span>
                                                                                     </li>
                                                                                     <li>
                                                                                             <span class="sm-text t-text-heading">
-                                                                                                <img src="/img/star.png"
+                                                                                                <img src="img/star.png"
                                                                                                      style="width: 16px;height: 16px;margin-top: -1px">
                                                                                             </span>
                                                                                     </li>
@@ -656,7 +606,7 @@
                                                             <!--                                                                                    </span>-->
                                                             <!--                                                                                    <ul class="t-list d-flex align-items-center">-->
                                                             <!--                                                                                        <li>-->
-                                                            <!--                                                                                            <img src="/img/stamp.jpg" style="height: 35px;width: 31px;margin-left: 3px;">-->
+                                                            <!--                                                                                            <img src="img/stamp.jpg" style="height: 35px;width: 31px;margin-left: 3px;">-->
                                                             <!--                                                                                        </li>-->
                                                             <!--&lt;!&ndash;                                                                                        <li class="t-mr-3">&ndash;&gt;-->
                                                             <!--&lt;!&ndash;                                                                                            <span class="sm-text">&ndash;&gt;-->
@@ -665,17 +615,17 @@
                                                             <!--&lt;!&ndash;                                                                                        </li>&ndash;&gt;-->
                                                             <!--                                                                                        <li>-->
                                                             <!--                                                                                            <span class="sm-text t-text-heading">-->
-                                                            <!--                                                                                                <img src="/img/no-asset.png" style="width: 22px;height: 22px;margin-top: -1px;margin-right: -1px">-->
+                                                            <!--                                                                                                <img src="img/no-asset.png" style="width: 22px;height: 22px;margin-top: -1px;margin-right: -1px">-->
                                                             <!--                                                                                            </span>-->
                                                             <!--                                                                                        </li>-->
                                                             <!--                                                                                        <li class="t-mr-3">-->
                                                             <!--                                                                                            <span class="sm-text t-text-heading">-->
-                                                            <!--                                                                                                <img src="/img/no-paperclip.png" style="width: 16px;height: 16px;margin-right:2px">-->
+                                                            <!--                                                                                                <img src="img/no-paperclip.png" style="width: 16px;height: 16px;margin-right:2px">-->
                                                             <!--                                                                                            </span>-->
                                                             <!--                                                                                        </li>-->
                                                             <!--                                                                                        <li>-->
                                                             <!--                                                                                            <span class="sm-text t-text-heading">-->
-                                                            <!--                                                                                                <img src="/img/no-star.png" style="width: 16px;height: 16px;margin-top: -1px">-->
+                                                            <!--                                                                                                <img src="img/no-star.png" style="width: 16px;height: 16px;margin-top: -1px">-->
                                                             <!--                                                                                            </span>-->
                                                             <!--                                                                                        </li>-->
                                                             <!--                                                                                    </ul>-->
@@ -699,34 +649,31 @@
                                                                 <div class="messages__msg">
                                                                     <div class="messages__avatar messages__avatar-empty t-bg-alpha">
                                                                         <div class="messages__avatar-replacer text-uppercase">
-                                                                            as
+                                                                            ps
                                                                         </div>
                                                                         <div class="messages__avatar-notification messages__avatar-notification--active"></div>
                                                                     </div>
                                                                     <div class="messages__content messages__content--unseen">
                                                                         <div class="messages__title">
                                                                             <span class="messages__author text-capitalize">
-                                                                                Asaduzzamana
-                                                                                sarker
+                                                                                Piper Shi
                                                                             </span>
                                                                         </div>
                                                                         <div class="messages__content-body">
                                                                             <span class="messages__preview">
-                                                                                Hi,
-                                                                                I'm
-                                                                                Asaduzzaman
+                                                                                Welcome to PipeMail.
                                                                             </span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </a><img class="stamp_big_view" src="/img/stamp.jpg"
+                                                            </a><img class="stamp_big_view" src="img/stamp.jpg"
                                                                      height="70px" width="60">
                                                         </div>
                                                     </div>
-                                                    <div class="chat__right-main">
+                                                    <div class="chat__right-main" data-simplebar>
                                                         <div class="mx-inbox__body-head d-flex align-items-center justify-content-between flex-wrap t-pl-15 t-pr-15 t-pt-30">
                                                             <h6 class="mt-0 mb-md-0 text-capitalize t-mr-25">
-                                                                Adminage Dashboard Final Designa
+                                                                Please read this mail carefully.
                                                             </h6>
                                                             <ul class="t-list d-flex align-items-center">
                                                                 <li class="t-list__item t-text-primary">
@@ -754,33 +701,32 @@
                                                         </div>
                                                         <div class="t-pl-15 t-pr-15 t-pt-30 t-pb-30">
                                                             <p class="sm-text">
-                                                                Dear Mr. Jhone,
+                                                                Dear User,
                                                             </p>
                                                             <p class="sm-text">
-                                                                This is with reference to your job requirement on
-                                                                {portal name} for the role of Sales Manager. I truly
-                                                                believe that my qualifications and experience make me a
-                                                                perfect candidate for the job.
+                                                                Welcome to PipeMail.Here, you can say whatever you
+                                                                want without fear of your data being compromised.
+                                                                In fact, we can't leak your data either, because we
+                                                                can only get encrypted data.
                                                             </p>
                                                             <p class="sm-text">
-                                                                I completed my MBA in Sales and Marketing from
-                                                                {Institute Name}. I have worked as an Area Sales Manager
-                                                                and Assistant Marketing Manager at {Company Name}.
-                                                                During my stint as Area Sales Manager, I conceptualised
-                                                                and executed a Customer Engagement Program that resulted
-                                                                in higher sales. As Assistant Marketing Manager.
+                                                                After you send an email using PipeMail, you can view
+                                                                the email information. The email data will definitely
+                                                                surprise you, because you find that the content of the
+                                                                email is unreadable, and even the attachments cannot be
+                                                                opened normally. This is because PipeMail has encrypted your email.
+                                                                PipeMail use asymmetric encryption when encrypting, which ensures
+                                                                that no one except you and the recipient can decrypt your email.
                                                             </p>
                                                             <p class="sm-text">
-                                                                I have attached my CV to the email for your reference.
-                                                                Please have a look at it.
-                                                                I hope to meet you and discuss this opportunity further.
-                                                                Thank you for considering my application for the role.
+                                                                At this point you're probably eager to try it out, but
+                                                                I'm sorry to tell you that you can't use it just yet.
+                                                                The core function is being tested and will be launched
+                                                                around March 20.Stay tuned on PipeMail.
                                                             </p>
                                                             <p class="sm-text">
-                                                                Best regards,
-                                                                {Your Name}
-                                                                Mob: {Your Contact Number}
-                                                                Email Id: {Your Email Address)
+                                                                Best regards,<br>
+                                                                Piper Shi
                                                             </p>
                                                         </div>
                                                     </div>
@@ -849,9 +795,9 @@
 </div>
 <!-- Page Wrapper End -->
 
-<script type="text/javascript" src="/js/simplebar.js"></script>
-<script type="text/javascript" src="/js/stamp_big_view.js"></script>
-<script type="text/javascript" src="/js/plumen.js"></script>
+<script type="text/javascript" src="js/simplebar.js"></script>
+<script type="text/javascript" src="js/stamp_big_view.js"></script>
+<script type="text/javascript" src="js/plumen.js"></script>
 </body>
 
 </html>
