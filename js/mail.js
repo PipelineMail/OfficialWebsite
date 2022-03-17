@@ -133,54 +133,54 @@ function formatTime(seconds) {
     return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
 }
 
-async function sendMail(){
+async function sendMail() {
     var receivers = getReceivers();
-    console.log("receivers:"+receivers)
-    console.log("receivers:"+receivers.length)
-    console.log("receivers:"+receivers.size)
+    console.log("receivers:" + receivers)
+    console.log("receivers:" + receivers.length)
+    console.log("receivers:" + receivers.size)
     receivers.push(userAddressFull)
     var ipfsFile = new Object();
     ipfsFile["sender"] = userAddressFull;
-    ipfsFile["receiver"] = {"type":"enumeration","details":{"amount":receivers.length,"list":receivers}};
+    ipfsFile["receiver"] = {"type": "enumeration", "details": {"amount": receivers.length, "list": receivers}};
     var stamp = new Object();
-    stamp["address"] = $('#write_mail_stamp_address').text().replace(/\ +/g,"").replace(/[\r\n]/g,"");
-    stamp["tokenId"] = $('#write_mail_stamp_token_id').text().replace(/\ +/g,"").replace(/[\r\n]/g,"");
+    stamp["address"] = $('#write_mail_stamp_address').text().replace(/\ +/g, "").replace(/[\r\n]/g, "");
+    stamp["tokenId"] = $('#write_mail_stamp_token_id').text().replace(/\ +/g, "").replace(/[\r\n]/g, "");
     ipfsFile["stamp"] = stamp;
     ipfsFile["asset"] = false;
     ipfsFile["attachment"] = true;
     ipfsFile["version"] = "beta";
     ipfsFile["ciphertexts"] = await encryptMetadata(receivers)
     console.log(JSON.stringify(ipfsFile));
-    calculateHash(new File([JSON.stringify(ipfsFile)],"mail"))
+    calculateHash(new File([JSON.stringify(ipfsFile)], "mail"))
 }
 
-function getReceivers(){
+function getReceivers() {
     var toText = $('#send_mail_to').val()
     // if(toText === ''){
     //
     // }
-    var receivers =  toText.split(";");
-    if(receivers.length===0){
+    var receivers = toText.split(";");
+    if (receivers.length === 0) {
         alert("Please fill in the recipient's address!")
     }
     return receivers;
 }
 
-async function encryptMetadata(addresses){
+async function encryptMetadata(addresses) {
     var metadata = getMailMetadata();
     var publicKeys = await getPublicKeys(addresses)
-    console.log("publicKeys:"+publicKeys)
+    console.log("publicKeys:" + publicKeys)
     var ciphertexts = new Object();
     //can not find receiver's publicKey
     // if(publicKeys === '[]'){
     // }
-    for(var i = 0;i<publicKeys.length;i++){
-        ciphertexts[addresses[i]] = encryptData(publicKeys[i],metadata)
+    for (var i = 0; i < publicKeys.length; i++) {
+        ciphertexts[addresses[i]] = encryptData(publicKeys[i], metadata)
     }
     return ciphertexts;
 }
 
-function getMailMetadata(){
+function getMailMetadata() {
     var metadata = new Object();
     metadata["subject"] = $('#send_mail_subject').val();
     metadata["content"] = $('#editor1').html();
@@ -190,39 +190,39 @@ function getMailMetadata(){
     return JSON.stringify(metadata);
 }
 
-function getAssociatedMails(){
+function getAssociatedMails() {
     var associatedMails = [];
     $('.associatedMail').each(function (e) {
         var senderMail = $(this).text().split("-");
-        associatedMails.push({"sender":senderMail[0],"index":senderMail[1],"type":"forward"})
+        associatedMails.push({"sender": senderMail[0], "index": senderMail[1], "type": "forward"})
     })
     return associatedMails;
 }
 
-async function getPublicKeys(addresses){
-    console.log("addresses:"+addresses)
+async function getPublicKeys(addresses) {
+    console.log("addresses:" + addresses)
     var formData = new FormData();
-    formData.append("addresses",JSON.stringify(addresses));
+    formData.append("addresses", JSON.stringify(addresses));
     var publicKeys;
     await $.ajax({
-        url:'/user/pubkey', /*接口域名地址*/
-        type:'post',
+        url: '/user/pubkey', /*接口域名地址*/
+        type: 'post',
         data: formData,
-        headers:{
-            "chain-id":"1",
-            "operator":userAddressFull,
-            "auth-signature":""
+        headers: {
+            "chain-id": "1",
+            "operator": userAddressFull,
+            "auth-signature": ""
         },
         contentType: false,
         processData: false,
-        success:function(res){
+        success: function (res) {
             console.log(res.data);
-            if(res.code==200){
+            if (res.code == 200) {
                 publicKeys = res.data;
             }
         }
     })
-    if(publicKeys.length!=addresses.length){
+    if (publicKeys.length != addresses.length) {
         alert("Please ")
     }
     return publicKeys;

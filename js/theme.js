@@ -100,21 +100,21 @@
         var i = $(window).width();
         $(".row .tw-stretch-element-inside-column").each(function () {
             var $this = $(this),
-                    row = $this.closest(".row"),
-                    cols = $this.closest('[class^="col-"]'),
-                    rect = this.getBoundingClientRect(),
-                    l = row[0].getBoundingClientRect(),
-                    s = cols[0].getBoundingClientRect(),
-                    r = rect.left,
-                    d = i - rect.right,
-                    c = l.left + (parseFloat(row.css("padding-left")) || 0),
-                    u = i - l.right + (parseFloat(row.css("padding-right")) || 0),
-                    p = s.left,
-                    f = i - s.right,
-                    styles = {
-                        "margin-left": 0,
-                        "margin-right": 0
-                    };
+                row = $this.closest(".row"),
+                cols = $this.closest('[class^="col-"]'),
+                rect = this.getBoundingClientRect(),
+                l = row[0].getBoundingClientRect(),
+                s = cols[0].getBoundingClientRect(),
+                r = rect.left,
+                d = i - rect.right,
+                c = l.left + (parseFloat(row.css("padding-left")) || 0),
+                u = i - l.right + (parseFloat(row.css("padding-right")) || 0),
+                p = s.left,
+                f = i - s.right,
+                styles = {
+                    "margin-left": 0,
+                    "margin-right": 0
+                };
             if (Math.round(c) === Math.round(p)) {
                 var h = parseFloat($this.css("margin-left") || 0);
                 styles["margin-left"] = h - r
@@ -126,6 +126,7 @@
             $this.css(styles)
         })
     }
+
     tw_stretch();
 
     /*--------------------------------------------------------
@@ -165,8 +166,7 @@
     /*--------------------------------------------------------
      / 8. Google Map
      /---------------------------------------------------------*/
-    if ($("#gmap").length > 0)
-    {
+    if ($("#gmap").length > 0) {
         var map;
 
         map = new GMaps({
@@ -283,11 +283,9 @@
      / 11. Fixed Header
      /--------------------------------------------------------*/
     $(window).on('scroll', function () {
-        if ($(window).scrollTop() > 40)
-        {
+        if ($(window).scrollTop() > 40) {
             $("#header").addClass('fixedHeader animated flipInX');
-        } else
-        {
+        } else {
             $("#header").removeClass('fixedHeader animated flipInX');
         }
     });
@@ -305,8 +303,7 @@
     /*--------------------------------------------------------
      / 13. Contact From Submit
      /----------------------------------------------------------*/
-    if ($("#contactForm").length > 0)
-    {
+    if ($("#contactForm").length > 0) {
         $("#contactForm").on('submit', function (e) {
             e.preventDefault();
             $("#con_submit").html('Processsing...');
@@ -319,30 +316,31 @@
 
             var required = 0;
             $(".required", this).each(function () {
-                if ($(this).val() == '')
-                {
+                if ($(this).val() == '') {
                     $(this).addClass('reqError');
                     required += 1;
-                } else
-                {
-                    if ($(this).hasClass('reqError'))
-                    {
+                } else {
+                    if ($(this).hasClass('reqError')) {
                         $(this).removeClass('reqError');
-                        if (required > 0)
-                        {
+                        if (required > 0) {
                             required -= 1;
                         }
                     }
                 }
             });
-            if (required === 0)
-            {
+            if (required === 0) {
                 $.ajax({
                     type: "POST",
                     url: 'ajax/mail.php',
-                    data: {f_name: f_name, l_name: l_name, email: email, phone: phone, address: address, message: message},
-                    success: function (data)
-                    {
+                    data: {
+                        f_name: f_name,
+                        l_name: l_name,
+                        email: email,
+                        phone: phone,
+                        address: address,
+                        message: message
+                    },
+                    success: function (data) {
                         //alert(data);
                         $("#con_submit").html('Done!');
                         $("#contactForm input, #contactForm textarea").val('');
@@ -351,8 +349,7 @@
                         }, 2500);
                     }
                 });
-            } else
-            {
+            } else {
                 $("#con_submit").html('Failed!');
             }
 
