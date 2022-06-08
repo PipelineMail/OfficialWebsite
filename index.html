@@ -6,14 +6,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
 
         <!-- Include All CSS -->
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-        <link rel="stylesheet" type="text/css" href="css/payloan-icon.css"/>
-        <link rel="stylesheet" type="text/css" href="css/owl.theme.css"/>
-        <link rel="stylesheet" type="text/css" href="css/owl.carousel.css"/>
-        <link rel="stylesheet" type="text/css" href="css/preset.css"/>
-        <link rel="stylesheet" type="text/css" href="css/theme.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/payloan-icon.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/owl.theme.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/owl.carousel.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/preset.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/theme.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/fy-alert.css"/>
+        <script src="/js/fy-alert.js"></script>
+        <script type="text/javascript">
+            function attention() {
+                fyAlert.alert({
+                    title: "Attention",
+                    aniExtend: 'lightSpeedIn',
+                    content: '<br>1. Please read this <a style="color: #0a58ca" href="https://mirror.xyz/pipemail.eth/OV9FTirk-1xrLHcbDc-wcQxuNmixNMm_rlDxahKWbh4" target="_blank"><b>User Guide</b></a> before using PipeMail. The guide <br>is very important and it will guide you on how to use PipeMail.' +
+                         '<br><br>2. PipeMail is still in beta, so PipeMail may be upgraded, shut <br>down or cleaned up at any time, so <b>please back up your data</b>.' +
+                         '<br><br>3. PipeMail is currently deployed on <b>Polygon Testnet(Mumbai)</b>. <br>You can apply for the MATIC token for testing through this <a style="color: #0a58ca" href="https://faucet.polygon.technology/" target="_blank"><b>link.</b></a><br><br>',
+                    end: function () {
+                        window.open('/home/inbox', '_blank');
+                    }
+                });
+            }
+        </script>
         <!-- Favicon Icon -->
-        <link rel="icon"  type="image/png" href="images/logo.png">
+        <link rel="icon"  type="image/png" href="/img/logo.png">
         <style>
             .arrow{
                 border: 25px solid transparent;
@@ -67,7 +83,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-3">
                         <div class="logo">
-                            <a href="index.html"><img src="images/logo.png" alt=""></a>
+                            <a href="/home/index"><img src="/img/logo.png" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-7">
@@ -82,10 +98,10 @@
                                     <a href="#">Home</a>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="#">Guide</a>
+                                    <a href="#quick_start_guide">Guide</a>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="#">Developer</a>
+                                    <a href="https://github.com/PipelineMail/OfficialWebsite" target="_blank">Developer</a>
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="#">Blog</a>
@@ -97,9 +113,10 @@
                             </ul>
                         </nav>
                     </div>
-                    <div class="col-lg-2 col-md-2 hidden-xs">
+                    <div class="col-lg-2 col-md-2 hidden-xs" onclick="attention()">
                         <div class="navigator_btn btn_bg text-right">
-                            <a class="common_btn" href="/404">Launch App</a>
+<!--                            <a class="common_btn" href="/home/inbox" target="_blank">Launch App</a>-->
+                            <div class="common_btn" style="padding: 20px 26px;">Launch App</div>
                         </div>
                     </div>
                 </div>
@@ -117,14 +134,15 @@
                                 <p>Using PipeMail to send mails,</p>
                                 <p>only the sender and recipient can decrypt the mail.</p>
                             </div>
-                            <div class="welcome_button">
-                                <a href="/404" class="common_btn">View Details</a>
+                            <div class="welcome_button" onclick="attention()">
+<!--                                <a href="#view_details" class="common_btn">View Details</a>-->
+                                <div class="common_btn" style="padding: 20px 26px">View Details</div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="header_img">
-                            <img src="images/home_working.png" alt="">
+                            <img src="/img/home_working.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -138,7 +156,7 @@
                     <div class="col-lg-12 text-center">
                         <h2 class="sec_title">The Problems With Traditional Mailboxes</h2>
                         <p class="sec_desc">
-                            In the past few decades, the mail system has brought us great convenience, but it also has many problems.
+                            In the past few decades, the mail system has brought us great convenience, but at the same time it has many problems.
                         </p>
                     </div>
                 </div>
@@ -146,31 +164,32 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 faqPdRight">
                         <div class="singleFaq">
-                            <h3>01. Provide personal information</h3>
+                            <h3>01. Personal information is required</h3>
                             <p>
-                                When you sign up for X-mail, you have to
-                                provide personal information to the X-mail
-                                operators. In most cases, this information
-                                <br>can be used to determine who you are.
+                                When you register for X-Mail, you must
+                                provide your information to the X-Mail
+                                operator. In most cases, your identity
+                                can be determined from this information.
                             </p>
                         </div>
 
                         <div class="singleFaq">
                             <h3>03. Your are being monitored</h3>
                             <p>
-                                Mailboxes operators have been providing your
-                                mail to governments. Believe it or not, your
-                                mails have been monitored in the past and will
-                                be monitored in the future. It's common sense.
+                                Mailbox operators have been providing your
+                                mail to the government. Believe it or not, your
+                                emails have been, are, and will be monitored
+                                <br>all the time. It's almost common sense.
                             </p>
                         </div>
 
                         <div class="faqSingleFaq">
-                            <h3>05. Near real-time transmission</h3>
+                            <h3>05. Non-real-time transmission</h3>
                             <p>
-                                Due to networks, etc., mail is not always
-                                delivered in a timely manner. But sometimes
-                                we may need to receive some instant information by mail, such as verification codes.
+                                Due to networks, time zones, etc., mail is not
+                                always delivered in time. But sometimes we
+                                may need to receive some instant information
+                                by mail, such as verification codes.
                             </p>
                         </div>
 
@@ -178,20 +197,20 @@
                     <div class="col-lg-6 col-md-6 faqPdLeft">
 
                         <div class="singleFaq">
-                            <h3>02. Cleartext transmission,no privacy</h3>
+                            <h3>02. Clear text transmission, no privacy</h3>
                             <p>
                                 Emails are sent in clear text without encryption.
-                                Although some mailboxes provide the option to send
-                                encrypted emails, that's just psychological
-                                comfort.In short, you don't have any privacy.
+                                Although some mailbox provide the option of
+                                encrypted sending, that is only psychological
+                                comfort. In short, you don't have any privacy.
                             </p>
                         </div>
                         <div class="singleFaq">
                             <h3>04. A flood of spam</h3>
                             <p>
-                                Since email is basically free to send, anyone
-                                who knows your email address can send you an
-                                email. This has led to a flood of spam, such
+                                Since sending email is almost free, anyone who
+                                knows your email address can send you an email.
+                                This has led to the proliferation of spam such
                                 as advertisements, promotions, etc.
                             </p>
                         </div>
@@ -211,23 +230,22 @@
         <!-- Common section -->
 
         <!-- Common section -->
-        <section class="commonSection homeContact">
+        <section class="commonSection homeContact" id="view_details">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-5 col-md-5">
                         <div class="contactArea">
                             <h3>What kind of mail system do we need?</h3>
-                            <p>First, the content of the mail must be protected.</p>
-                            <p>Second, users provide little or no personal information to the platform.</p>
-                            <p>Third, users are protected from spam.</p>
+                            <p><span style="color: black;font-size: 25px">First,</span> users are basically not required<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to provide personal information.</p>
+                            <p><span style="color: black;font-size: 25px">Then,</span> email content cannot be leaked.</p>
+                            <p><span style="color: black;font-size: 25px">Third,</span> users are not bothered by spam.</p>
                             <p>&nbsp;</p>
-<!--                        <p>We are here to help you when you need your financial support, then we are help you.</p>-->
                             <h4><b style="color:black;">PipeMail is such a mail system.</b></h4>
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-7">
                         <div class="contactThumb">
-                            <img src="images/home_writing.png" alt=""/>
+                            <img src="/img/home_writing.png" alt=""/>
                         </div>
                     </div>
                 </div>
@@ -247,10 +265,10 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="singleTestimoinal">
                             <div class="testiThumb">
-                                <img src="images/no_register.png" alt=""/>
+                                <img src="/img/no_register.png" alt=""/>
                             </div>
                             <p>
-                                If you want to use PipeMail, you don't have to provide any information, all you have to do is connect to your digital wallet.
+                                If you want to use PipeMail, you don't have to provide any information, all you have to do is connect <br>to your digital wallet.
                             </p>
                             <b style="color: black">No Registration Required</b>
                         </div>
@@ -258,18 +276,18 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="singleTestimoinal">
                             <div class="testiThumb">
-                                <img src="images/encrypt.png" alt=""/>
+                                <img src="/img/encrypt.png" alt=""/>
                             </div>
                             <p>
-                                Mail is encrypted with user's public-key. Anyone else, including PipeMail can't get raw mail data, only encrypted data.
+                                Mail is encrypted with user's public-key. No one else including PipeMail can get the raw data, only the encrypted data.
                             </p>
-                            <b style="color: black">User Controlled Encryption</b>
+                            <b style="color: black">User-Controlled Encryption</b>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="singleTestimoinal">
                             <div class="testiThumb">
-                                <img src="images/privacy.png" alt=""/>
+                                <img src="/img/privacy.png" alt=""/>
                             </div>
                             <p>
                                 Only the sender and recipient can decrypt the mail, no one can monitor your mails.<br>Your privacy can be completely protected.
@@ -280,10 +298,11 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="singleTestimoinal">
                             <div class="testiThumb">
-                                <img src="images/compatibility.png" alt=""/>
+                                <img src="/img/compatibility.png" alt=""/>
                             </div>
                             <p>
-                                PipeMail was developed in Solidity, in other words, any chain capable of running Solidity code can run PipeMail.
+                                PipeMail is developed in Solidity, that is, any server capable of running Solidity code can run PipeMail.
+
                             </p>
                             <b style="color: black">Good Compatibility & Portability</b>
                         </div>
@@ -291,10 +310,10 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="singleTestimoinal">
                             <div class="testiThumb">
-                                <img src="images/no_spam.png" alt=""/>
+                                <img src="/img/no_spam.png" alt=""/>
                             </div>
                             <p>
-                                To send a mail with PipeMail, the sender needs to pay for gas. This greatly reduces the amount of spam.<br>&nbsp;
+                                To send mail using PipeMail, the sender must pay for gas. This greatly reduces the amount of spam.
                             </p>
                             <b style="color: black">Almost No Spam</b>
                         </div>
@@ -302,12 +321,12 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="singleTestimoinal">
                             <div class="testiThumb">
-                                <img src="images/currency.png" alt=""/>
+                                <img src="/img/currency.png" alt=""/>
                             </div>
                             <p>
-                                With PipeMail, you can transfer digital assets along with your mail.<br>&nbsp;<br>&nbsp;<br>&nbsp;
+                                When sending an mail with PipeMail, you can transfer digital asset with it.<br>&nbsp;
                             </p>
-                            <b style="color: black">Send Token & NFT</b>
+                            <b style="color: black">Transfer ERC20 & NFT</b>
                         </div>
                     </div>
                 </div>
@@ -316,12 +335,12 @@
         <!-- Common section -->
 
         <!-- Common section -->
-        <section class="commonSection applicatioProces">
+        <section class="commonSection applicatioProces" id="quick_start_guide">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <h2 class="sec_title">Quick Start Guide<br></h2>
-                        <p class="sec_desc">Please choose your use.</p>
+                        <p class="sec_desc">Please choose your usage.</p>
                         <p class="index_select_use_active" id="index_select_use_personal" onclick="indexSelectUseActive('personal')">Personal Use</p>
                         &nbsp;&nbsp;or&nbsp;&nbsp;
                         <p class="index_select_use" id="index_select_use_dapp" onclick="indexSelectUseActive('dapp')">For My Dapp <p>&nbsp;</p></p>
@@ -352,7 +371,7 @@
                                             <h1>01</h1>
                                         </div>
                                         <h4>Provide Your Public Key</h4>
-                                        <p>Mail is encrypted with public key. Without public key, others can only send you unencrypted mails.</p>
+                                        <p>Mail is encrypted with public key. Providing public key does not put your address at risk of being stolen.</p>
                                     </div>
                                 </div>
                             </div>
@@ -365,14 +384,14 @@
                                         <div class="bg_number">
                                             <h1>01</h1>
                                         </div>
-                                        <h4>Provider certificate of owner</h4>
+                                        <h4>Prove Your Identity</h4>
                                     </div>
                                     <div class="back">
                                         <div class="bg_number">
                                             <h1>01</h1>
                                         </div>
-                                        <h4>Provider certificate of owner</h4>
-                                        <p>If you want to send mails to users on behalf of the Dapp, you must prove that you are the owner of the Dapp.</p>
+                                        <h4>Prove Your Identity</h4>
+                                        <p>If you want to send mails on behalf of the Dapp, you must prove that you are the owner of the Dapp</p>
                                     </div>
                                 </div>
                             </div>
@@ -385,13 +404,13 @@
                                         <div class="bg_number">
                                             <h1>02</h1>
                                         </div>
-                                        <h4>Choose a NFT as the stamp</h4>
+                                        <h4>Choose a NFT as a Stamp</h4>
                                     </div>
                                     <div class="back">
                                         <div class="bg_number">
                                             <h1>02</h1>
                                         </div>
-                                        <h4>Choose a NFT as the stamp</h4>
+                                        <h4>Choose a NFT as a Stamp</h4>
                                         <p>In PipeMail, your mail must be stamped.<br>What is the Stamp? The NFT. Any NFT could be a stamp.</p>
                                     </div>
                                 </div>
@@ -411,7 +430,7 @@
                                             <h1>03</h1>
                                         </div>
                                         <h4>Write & Send</h4>
-                                        <p>You can send attachments without size limits, you can also transfer token or NFT with mail.</p>
+                                        <p>PipeMail will not limit the size of attachments in the future, but at this stage, attachments are up to 10M.</p>
                                     </div>
                                 </div>
                             </div>
@@ -437,31 +456,31 @@
                         </div>
                         <div class="customer_area faqPdRight">
                             <div class="singleCustomer">
-                                <img src="images/web3.0.png" alt=""/>
+                                <img src="/img/web3.0.png" alt=""/>
                                 <p>
-                                    If you are a web3 user, maybe you need an mail software for communication, preferably a web3 email software.
+                                    If you are a web3 user, maybe you need a web3-style email software to send messages, especially one that can protect privacy.
                                 </p>
                                 <h5>Web3 User</h5>
                             </div>
                             <div class="singleCustomer">
-                                <img src="images/dapp.png" alt=""/>
+                                <img src="/img/dapp.png" alt=""/>
                                 <p>
-                                    If you are a dapp operator, maybe you need a web3-style communication software to communicate with your users.
+                                    If you are a dapp operator, maybe you need a web3-style email software to communicate with your users.
                                 </p>
-                                <h5>Dapp</h5>
+                                <h5>Dapp Operator</h5>
                             </div>
                             <div class="singleCustomer">
-                                <img src="images/you.png" alt=""/>
+                                <img src="/img/you.png" alt=""/>
                                 <p>
-                                    PipeMail is for anyone. <br>If you want to protect your privacy, PipeMail is probably one of the best mail software.
+                                    PipeMail is for anyone. <br>If you don't want your email to be leaked, PipeMail is probably one of the best email software.
                                 </p>
-                                <h5>You</h5>
+                                <h5>It's You</h5>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="customer_thumb">
-                            <img src="images/home_relaxing.png" alt=""/>
+                            <img src="/img/home_relaxing.png" alt=""/>
                         </div>
                     </div>
                 </div>
@@ -475,27 +494,14 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <h2 class="sec_title">PipeMail Community</h2>
-                        <p class="sec_desc">If you are interested in PipeMail, you can join our community<br> to discuss, ask questions and make suggestions.</p>
+                        <p class="sec_desc">If you are interested in PipeMail, you can follow our Twitter account.<br>Discord channel is under construction.</p>
+
+
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-12 col-md-6">
                         <div class="singleTeam text-center">
-                            <img src="images/discord.png" alt="" width="100px" height="100px">
-                            <h4>Discord</h4>
-                            <p><a href="javascript:;" style="color: black">there is nothing</a></p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="singleTeam text-center">
-                            <img src="images/telegram.png" alt="" width="100px" height="100px">
-                            <h4>Telegram</h4>
-                            <p><a href="https://t.me/pipemail" target="_blank" style="color: black">@PipeMail</a></p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="singleTeam text-center">
-                            <img src="images/twitter.png" alt="" width="100px" height="100px">
+                            <img src="/img/twitter.png" alt="" width="100px" height="100px">
                             <h4>Twitter</h4>
                             <p><a href="https://twitter.com/PipeMailLabs" target="_blank" style="color: black">@PipeMailLabs</a></p>
                         </div>
@@ -522,13 +528,13 @@
             <div class="stick"></div>
         </div>
         <!-- Include All JS -->
-        <script src="js/jquery.js"></script>
-        <script src="js/jquery.themepunch.revolution.min.js"></script>
-        <script src="js/jquery.themepunch.tools.min.js"></script>
+        <script src="/js/jquery.js"></script>
+        <script src="/js/jquery.themepunch.revolution.min.js"></script>
+        <script src="/js/jquery.themepunch.tools.min.js"></script>
 
-        <script src="js/owl.carousel.js"></script>
-        <script src="js/theme.js"></script>
-        <script src="js/custom.js"></script>
+        <script src="/js/owl.carousel.js"></script>
+        <script src="/js/theme.js"></script>
+        <script src="/js/custom.js"></script>
         <script>
             $(function(){
                 $(window).scroll(function(){
