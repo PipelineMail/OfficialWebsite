@@ -6,31 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Write Mail</title>
 
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="css/stamp_big_view.css"/>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-    <script type="text/javascript" src="js/wysiwyg.js"></script>
-    <script type="text/javascript" src="js/wysiwyg-editor.js"></script>
-    <script src="js/blockies.mjs"></script>
-    <script src="js/custom-web3.js"></script>
-    <script src="js/spark-md5.min.js"></script>
-    <script src="js/crypto.js"></script>
-    <!--<script src="js/oss.js"></script>-->
-    <script type="text/javascript" src="https://gosspublic.alicdn.com/aliyun-oss-sdk-6.16.0.min.js"></script>
-    <script language=javascript src='js/crypto-js.min.js'></script>
-    <script language=javascript src='js/webtorrent.min.js'></script>
-    <script language=javascript src='js/ponyfill.min.js'></script>
-    <script language=javascript src='js/StreamSaver.js'></script>
-    <script src="js/upload.js"></script>
-    <script src="js/download.js"></script>
-    <script src="js/CryptoJS.min.js"></script>
-    <script src="js/sha256.js"></script>
-    <script src="js/walletEncrypt.js"></script>
-    <script src="js/mail.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.4.6.0.css">
-    <link rel="stylesheet" type="text/css" href="css/wysiwyg-editor.css"/>
-
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/fy-alert.css"/>
+    <script src="/js/fy-alert.js"></script>
+    <script type="text/javascript" src="/js/constants.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/stamp_big_view.css"/>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/web3.min.js"></script>
+    <script type="text/javascript" src="/js/ethers.js"></script>
+    <script type="text/javascript" src="/js/wysiwyg.js"></script>
+    <script type="text/javascript" src="/js/wysiwyg-editor.js"></script>
+    <script src="/js/blockies.mjs"></script>
+    <script src="/js/custom-web3.js"></script>
+    <script src="/js/spark-md5.min.js"></script>
+    <script src="/js/crypto.js"></script>
+    <script language=javascript src='/js/crypto-js.min.js'></script>
+    <script language=javascript src='/js/webtorrent.min.js'></script>
+    <script language=javascript src='/js/ponyfill.min.js'></script>
+    <script language=javascript src='/js/StreamSaver.js'></script>
+    <script src="/js/upload.js"></script>
+    <script src="/js/download.js"></script>
+    <script src="/js/sha256.js"></script>
+    <script src="/js/walletEncrypt.js"></script>
+    <script src="/js/mail.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.4.6.0.css">
+    <link rel="stylesheet" type="text/css" href="/css/wysiwyg-editor.css"/>
+<!--    <link rel="stylesheet" type="text/css" href="/css/reset.css"/>-->
+<!--    <link rel="stylesheet" type="text/css" href="/css/styles.css"/>-->
+<!--    <script src="/js/jquery.ui.widget.min.js"></script>-->
+<!--    <script src="/js/jquery.manifest.js"></script>-->
+    <link rel="icon"  type="image/png" href="/img/logo.png">
     <script type="text/javascript">
         $(function () {
             $('#editor1').each(function (index, element) {
@@ -151,14 +156,9 @@
                     dropfileclick: 'Drop image or click',
                     placeholderUrl: 'www.example.com',
                     maxImageSize: [600, 600]
-                }).change(function () {
-                    if (typeof console != 'undefined') console.log('change')
-                }).focus(function () {
-                    if (typeof console != 'undefined') console.log('focus')
-                }).blur(function () {
-                    if (typeof console != 'undefined') console.log('blur')
                 })
             });
+            document.getElementById('editor1').style = 'width:100%;height:'+(window.innerHeight - 350)+'px;text-align: left';
             $(".input-box").wxSelect({
                 data: [
                     {"name": "USDT", "value": '0xdAC17F958D2ee523a2206206994597C13D831ec7'},
@@ -178,6 +178,24 @@
                     {"name": "SUSHI", "value": '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2'},
                 ]
             });
+            // $('#send_mail_to').manifest({
+            //     onAdd: function (data) {
+            //         console.log(data.substring(3));
+            //         return true;
+            //     },
+            //     formatDisplay: function (data, $item, $mpItem) {
+            //         console.log(data);
+            //         return data.substring(5);
+            //     },
+            // formatValue: async function (data, $item, $mpItem) {
+            //     if(data.endWith('.eth')){
+            //         return await provider.resolveName(data)
+            //     }else{
+            //         return data;
+            //     }
+            // }
+            // });
+            connectWallet();
         });
     </script>
 </head>
@@ -185,24 +203,61 @@
 <body class="t-bg-primary mx-sidenav-not-collapsed">
 <div id="stamp_big_view1" style="display:none;">
 
-    <div class="modelTost">
+    <div class="modelTost" id="stamp_big_view1_modelTost">
         <div class="modelTostChile">
             <div class="swiper-wrapper">
-                <div class='swiper-slide'><img src='' style='height: 285px;width: 260px' id="stamp_big_view_img"></div>
+                <div class='swiper-slide'><a href="" target="_blank" id="stamp_big_view_picture"><img src='' style='height: 285px;width: 230px' id="stamp_big_view_img"></a></div>
             </div>
             <div class="swiper-button-next">
-                <div id="stamp_big_view_publisher" onclick="copyToClipboard('stamp_publisher')"></div>
-                <div id="stamp_big_view_address" onclick="copyToClipboard('stamp_address')"></div>
-                <div id="stamp_big_view_id" onclick="copyToClipboard('stamp_id')"></div>
+                <div id="stamp_big_view_publisher" onclick="copyToClipboardById('stamp_publisher')"></div>
+                <div id="stamp_big_view_address" onclick="copyToClipboardById('stamp_address')"></div>
+                <div id="stamp_big_view_id" onclick="copyToClipboardById('stamp_id')"></div>
             </div>
         </div>
     </div>
 
 </div>
+
+<div id="download_file_big_view" style="display:none;">
+
+    <div class="modelTost download_file_tip_desc" id="download_file_big_view_modelTost">
+        <div class="modelTostChile">
+            <div style="height: 20px;"></div>
+            <div class="download_file_tip">
+                <div style="height: 10px;"></div>
+                <div style="margin-left: 30px;">Download a copy stored in PipeMail: <br>
+                    <span style="font-size: 13px">PipeMail stores encrypted files instead of original files. This option will download encrypted files stored on PipeMail. Please note that encrypted files are unreadable.</span>
+                </div>
+                <div style="height: 10px;"></div>
+            </div>
+            <div class="download_file_tip">
+                <div style="height: 10px;"></div>
+                <div style="margin-left: 30px">Download and decrypt on current device: <br>
+                    <span style="font-size: 13px">Download adn decrypt. The decryption key is derived from what you get after decrypting the ciphertext through your wallet.</span>
+                </div>
+                <div style="height: 10px;"></div>
+            </div>
+            <div class="download_file_tip">
+                <div style="height: 10px;"></div>
+                <div style="margin-left: 30px">Download both of the above.</div>
+                <div style="height: 10px;"></div>
+            </div>
+            <div class="download_file_tip">
+                <div style="height: 80px;margin-left: 15px">
+                    <span id="download_file_only" class="download_file_button" style="line-height:80px"><span style="margin-left: 20px;margin-right: 20px">Just Download</span></span>
+                    <span id="download_file_decrypt" class="download_file_button"> <span style="margin-left: 20px;margin-right: 20px">Download & Decrypt</span></span>
+                    <span id="download_file_all" class="download_file_button"> <span style="margin-left: 20px;margin-right: 20px">Download All</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 <div id="stamp_publisher" style="display:none;">PipeMail</div>
-<div id="stamp_address" style="display:none;">0x584d656e328a3b95a3fa48aba40da283d7204b8d</div>
-<div id="stamp_img" style="display:none">img/stamp.jpg</div>
-<div id="stamp_id" style="display:none">11</div>
+<div id="stamp_address" style="display:none;">0x7AADf7f00d98D0a3D16B5648cFed0Fea1718dbF7</div>
+<div id="stamp_img" style="display:none">/img/stamp_peace.jpg</div>
+<div id="stamp_id" style="display:none">1</div>
 <div class="container-fluid p-0">
     <div class="row g-0">
         <div class="col-9 col-xxl-10 flex-grow-1">
@@ -211,7 +266,7 @@
                     <div class="col-12">
                         <div class="mx-body"><br>
 
-                            <header class="header sticky-top d-none d-xl-block" onclick="UserAuthentication()">
+                            <header class="header sticky-top d-none d-xl-block">
                                 <div class="pagination t-bg-16 d-flex align-items-center justify-content-between">&nbsp;
                                     <span class="fa fa-gear"
                                           style="font-size: 20px; padding-right: 56px;padding-top: 11px;height: 26px"></span>
@@ -227,14 +282,14 @@
                                                     <!--                                                    <div style="height: 80px;text-align: center;padding-top: 15px;padding-left: 20px">-->
                                                     <h6 class="" id="user_address" style="display: none">
                                                         <span id="user_address_icon"
-                                                              style="position: absolute;margin-top:-15px;margin-left: -10px"><!--<img style="width: 50px;height: 50px" src="https://ipfs.io/ipfs/QmXJB3R66CguvWRtSK3XpGQArdMH1PU12Fmedk6hgM8Qoc/543.jpg">--></span>
+                                                              style="position: absolute;margin-top:-15px;margin-left: -10px"></span>
                                                         <span id="user_address_text" style="padding-left:50px"
-                                                              onclick="copyToClipboard('user_address_full')"></span>
+                                                              onclick="copyToClipboardById('user_address_full')"></span>
                                                         <span id="user_address_full"
                                                               style="padding-left:50px;display: none"
-                                                              onclick="copyToClipboard('user_address_text')"></span>
-                                                        <img style='margin-left:3px' src='img/copy.png'
-                                                             onclick="copyToClipboard('user_address_full')">
+                                                              onclick="copyToClipboardById('user_address_text')"></span>
+                                                        <!--<img style='margin-left:3px' src='/img/copy.png'-->
+                                                             <!--onclick="copyToClipboardById('user_address_full')">-->
                                                     </h6>
                                                     <h6 class="mt-0 mb-0 text-capitalize"
                                                         style="display: inline;margin-bottom: 10px;"
@@ -245,29 +300,29 @@
                                                 <div class="mx-inbox1 mb-0 t-bg-light-2" id="button-compose"
                                                      style="background-color: #d5d4f5;height: 77px;padding-top: 28px">
                                                     <h6 class="mt-0 text-capitalize mb-0" style="text-align: center">
-                                                        compose&nbsp;&nbsp;&nbsp;<img src="img/add.png">
+                                                        compose&nbsp;&nbsp;&nbsp;<img src="/img/add.png">
                                                     </h6>
                                                 </div>
                                                 <div class="t-pb-30" id="close-compose">
                                                     <div class="mx-mail-box--height" data-simplebar>
                                                         <div class="mx-mail-box">
                                                             <ul class="t-list mx-mail-box__list">
-                                                                <li class="mx-mail-box__list-item"
-                                                                    onclick="getMails(1,'0x584D656E328a3B95A3FA48aBa40Da283D7204b8D','',1,10)">
-                                                                    <a href="#" class="t-link mx-mail-box__link active">
+                                                                <li class="mx-mail-box__list-item" onclick="fillReceivedMail()">
+                                                                    <a href="#" class="t-link mx-mail-box__link func_list_item active">
                                                                                 <span class="mx-mail-box__icon">
                                                                                     <i class="las la-envelope-open-text"></i>
                                                                                 </span>
                                                                         <span class="sm-text text-capitalize t-text-primary">
                                                                                     inbox
                                                                                 </span>
-                                                                        <span class="badges badges-rounded badges-sm text-capitalize mx-mail-box__badge ms-auto">
+                                                                        <span id="inbox_amount" class="badges badges-rounded badges-sm text-capitalize mx-mail-box__badge ms-auto">
                                                                                     0
                                                                                 </span>
                                                                     </a>
                                                                 </li>
-                                                                <li class="mx-mail-box__list-item">
-                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                <li class="mx-mail-box__list-item"
+                                                                    onclick="UserAuthentication()">
+                                                                    <a href="#" class="t-link mx-mail-box__link func_list_item">
                                                                                 <span class="mx-mail-box__icon">
                                                                                     <i class="las la-edit"></i>
                                                                                 </span>
@@ -280,7 +335,7 @@
                                                                     </a>
                                                                 </li>
                                                                 <li class="mx-mail-box__list-item">
-                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                    <a href="#" class="t-link mx-mail-box__link func_list_item">
                                                                                 <span class="mx-mail-box__icon">
                                                                                     <i class="lar la-star"></i>
                                                                                 </span>
@@ -292,18 +347,21 @@
                                                                                 </span>
                                                                     </a>
                                                                 </li>
-                                                                <li class="mx-mail-box__list-item">
-                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                <li class="mx-mail-box__list-item" onclick="fillSentMail()">
+                                                                    <a href="#" class="t-link mx-mail-box__link func_list_item">
                                                                                 <span class="mx-mail-box__icon">
                                                                                     <i class="lab la-telegram-plane"></i>
                                                                                 </span>
                                                                         <span class="sm-text text-capitalize t-text-primary">
                                                                                     sent
                                                                                 </span>
+                                                                        <span id="sent_amount" class="badges badges-rounded badges-sm text-capitalize mx-mail-box__badge ms-auto">
+                                                                                    0
+                                                                                </span>
                                                                     </a>
                                                                 </li>
                                                                 <li class="mx-mail-box__list-item">
-                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                    <a href="#" class="t-link mx-mail-box__link func_list_item">
                                                                                 <span class="mx-mail-box__icon">
                                                                                     <i class="las la-trash"></i>
                                                                                 </span>
@@ -313,7 +371,7 @@
                                                                     </a>
                                                                 </li>
                                                                 <li class="mx-mail-box__list-item">
-                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                    <a href="#" class="t-link mx-mail-box__link func_list_item">
                                                                                 <span class="mx-mail-box__icon">
                                                                                     <i class="las la-exclamation-triangle"></i>
                                                                                 </span>
@@ -326,7 +384,7 @@
                                                                     </a>
                                                                 </li>
                                                                 <li class="mx-mail-box__list-item">
-                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                    <a href="#" class="t-link mx-mail-box__link func_list_item">
                                                                                 <span class="mx-mail-box__icon">
                                                                                     <i class="las la-atom"></i>
                                                                                 </span>
@@ -345,7 +403,7 @@
                                                         <div class="mx-mail-box">
                                                             <ul class="t-list mx-mail-box__list">
                                                                 <li class="mx-mail-box__list-item">
-                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                    <a href="#" class="t-link mx-mail-box__link func_list_item">
                                                                         <span class="las la-business-time t-mr-15"></span>
                                                                         <span class="sm-text text-capitalize t-text-primary">
                                                                                     business
@@ -353,7 +411,7 @@
                                                                     </a>
                                                                 </li>
                                                                 <li class="mx-mail-box__list-item">
-                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                    <a href="#" class="t-link mx-mail-box__link func_list_item">
                                                                         <span class="las la-user-friends t-mr-15"></span>
                                                                         <span class="sm-text text-capitalize t-text-primary">
                                                                                     social
@@ -361,7 +419,7 @@
                                                                     </a>
                                                                 </li>
                                                                 <li class="mx-mail-box__list-item">
-                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                    <a href="#" class="t-link mx-mail-box__link func_list_item">
                                                                         <span class="las la-user t-mr-15"></span>
                                                                         <span class="sm-text text-capitalize t-text-primary">
                                                                                     personal
@@ -380,11 +438,11 @@
                                                         <div class="mx-mail-box">
                                                             <ul class="t-list mx-mail-box__list">
                                                                 <li class="mx-mail-box__list-item">
-                                                                    <a href="#" class="t-link mx-mail-box__link">
+                                                                    <a href="#" class="t-link mx-mail-box__link func_list_item">
                                                                         <div class="messages__msg flex-wrap">
                                                                             <div class="messages__avatar messages__avatar-empty t-bg-alpha">
                                                                                 <div class="messages__avatar-replacer text-uppercase">
-                                                                                    ps
+                                                                                    shi
                                                                                 </div>
                                                                                 <div class="messages__avatar-notification messages__avatar-notification--active"></div>
                                                                             </div>
@@ -396,7 +454,7 @@
                                                                                 </div>
                                                                                 <div class="messages__content-body">
                                                                                             <span class="messages__preview text-capitalize t-text-heading">
-                                                                                               PipeMail manager
+                                                                                               PipeMailer
                                                                                             </span>
                                                                                 </div>
                                                                             </div>
@@ -411,79 +469,78 @@
 
 
                                             <div class="col-xl-5 col-xxl-7 t-bg-white border px-0" id="new-mail"
-                                                 style="display: none">
-                                                <div style="width:860px; margin-top: 80px;margin-bottom: 50px;margin-left: 108px">
+                                                 style="display: none" align="center">
+                                                <div style="width:90%; margin-top: 20px;margin-bottom: 20px;">
                                                     <div>
                                                         To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
                                                         <input id="send_mail_to" type="text"
-                                                               style="width: 770px;border:none;border-bottom:1px solid #000;"/>
+                                                               style="width: 87%;border:none;border-bottom:1px solid #000;"/>
                                                     </div>
                                                     <div>
                                                         Subject&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
                                                         <input id="send_mail_subject" type="text"
-                                                               style="width: 770px;border:none;border-bottom:1px solid #000;margin-bottom: 30px"/>
+                                                               style="width: 87%;border:none;border-bottom:1px solid #000;margin-bottom: 30px"/>
                                                     </div>
 
 
-                                                    <div style="height: 490px" id="editor1" name="editor"
+                                                    <div style="width:100%;height:400px;text-align: left" id="editor1" name="editor"
                                                          placeholder="Type your text here...">
                                                     </div>
-                                                    <input type="file" multiple name="file" id="upload">
-                                                    <button type="submit" name="btn" value="提交" id="btnId" onclick="uploadFile()">check</button>
-                                                    <div style="text-align: right">
-                                                        <button style="text-align: right;margin-top: 20px"
-                                                                type="submit" onclick="download()">delete
-                                                        </button>
-                                                        <button style="text-align: right;margin-top: 20px"
-                                                                type="submit">draft
-                                                        </button>
-                                                        <button style="text-align: right;margin-top: 20px"
-                                                                type="submit">cancle
-                                                        </button>
-                                                    </div>
-                                                    <div class="associatedMail">a-1</div>
-                                                    <div class="associatedMail">b-1</div>
+                                                    <input style="margin-top: 20px;"type="file" multiple name="file" id="upload" value="aaa" placeholder="bbb">
+                                                    <button style="margin-top: 20px;" type="submit" name="btn" value="send" id="btnId" onclick="uploadFile()">Send</button>
+<!--                                                    <div style="text-align: right">-->
+<!--                                                        <button style="text-align: right;margin-top: 20px"-->
+<!--                                                                type="submit" onclick="downloadMetadata()">delete-->
+<!--                                                        </button>-->
+<!--                                                        <button style="text-align: right;margin-top: 20px"-->
+<!--                                                                type="submit" onclick='downloadMetadata()'>draft-->
+<!--                                                        </button>-->
+<!--                                                        <button style="text-align: right;margin-top: 20px"-->
+<!--                                                                type="submit">cancle-->
+<!--                                                        </button>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="associatedMail">a-1</div>-->
+<!--                                                    <div class="associatedMail">b-1</div>-->
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-xl-4 col-xxl-3 border t-bg-white px-0"
                                                  id="new-mail-advantage" style="display: none">
-                                                <div style="width: 415px;height: 260px;margin-top:40px;margin-left:21px;border:1px solid black;position: absolute"></div>
+                                                <div style="width: 21.5%;height: 33%;margin-top:40px;margin-left:21px;margin-bottom:40px;border:1px solid black;position: absolute" onclick="selectStamp()"></div>
                                                 <div style="width: 100%;height: 50px;padding-top: 60px;padding-left: 30px;text-align: center">
                                                     Please choose a stamp.
                                                 </div>
-                                                <div style="text-align: center;display: none">
+                                                <div id="select_stamp_button" style="text-align: center;display: inline">
                                                     <img style="width:20%;margin-top: 94px;margin-bottom:35px;margin-left: 183px"
-                                                         src="img/select_stamp.png">
+                                                         src="/img/select_stamp.png">
                                                 </div>
-                                                <div style="display: inline">
-                                                    <div id="write_mail_stamp_address" style="display: none">
+                                                <div id="stamp_selected_detail" style="display: none">
+                                                    <!--<div id="write_mail_stamp_address" style="display: none">
                                                         0x659402c1a8b4c67125befc8f67ae7ed7ebe319e2
                                                     </div>
                                                     <div id="write_mail_stamp_token_id" style="display: none">
                                                         11
-                                                    </div>
+                                                    </div>-->
                                                     <div style="margin-top: 70px;margin-bottom:70px;margin-left:196px;position: absolute;line-height: 40px">
-                                                        publisher&nbsp;: &nbsp;PipeMail<br>
-                                                        <div onclick="copyToClipboard('write_mail_stamp_address')">contract&nbsp;&nbsp;&nbsp;:
-                                                            &nbsp;0x58a4D...4b8D<img src="img/copy.png"><br></div>
-                                                        token id&nbsp;&nbsp;&nbsp;: &nbsp;11
+                                                        <div id="write_mail_stamp_publisher" onclick="copyToClipboardFromTitle(this)"><br></div>
+                                                        <div id="write_mail_stamp_address" onclick="copyToClipboardFromTitle(this)" title=""><br></div>
+                                                        <div id="write_mail_stamp_token_id" onclick="copyToClipboardFromTitle(this)"></div>
                                                     </div>
-                                                    <img style="width:150px;height:180px;margin-top:40px;margin-left: 36px"
-                                                         src="img/stamp.jpg">
+                                                    <img id="write_mail_stamp_img" style="width:150px;height:180px;margin-top:40px;margin-left: 36px;"
+                                                         src="">
                                                 </div>
-
-                                                <div style="width: 415px;height: 417px;margin-top:60px;margin-left:21px;border:1px solid black;text-align: center">
-                                                    <div style="width: 100%;height: 50px;padding-top: 20px">Please enter
+                                                <div style="height: 10%"></div>
+                                                <div style="width: 90%;height: 43%;margin-left:21px;border:1px solid black;text-align: center" onclick="alert('This feature is not currently available to the public.')">
+                                                    <div style="pointer-events: none;width: 100%;height: 50px;padding-top: 20px">Please enter
                                                         digital assets and quantity.
                                                     </div>
-                                                    <div style="display: inline;text-align: center">
+                                                    <div style="pointer-events: none;display: inline;text-align: center">
                                                         <div style="margin-top: 15px">
                                                             ETH&nbsp;: &nbsp;<input style="height: 25px;width: 100px"
                                                                                     placeholder="the quantity">&nbsp;*
                                                             <select id="eth_uint_select"
                                                                     style="height: 25px;width: 105px"
                                                                     onchange="eth_uint_select()">
-                                                                <option value="Wei">Weia</option>
+                                                                <option value="Wei">Wei</option>
                                                                 <option value="Kwei">Kwei</option>
                                                                 <option value="Gwei">Gwei</option>
                                                                 <option value="Microether">Microether</option>
@@ -491,27 +548,26 @@
                                                                 <option value="Ether" selected>Ether(ETH)</option>
 
                                                             </select>
-                                                            <div id="eth_uint_select_info" style="margin-top: 10px">1
-                                                                ETH = 1 Ether = 10<sup>18</sup>&nbsp;Wei
-                                                            </div>
-                                                            <hr style="margin-top: 10px;width: 20%;margin-left: 165px"/>
-                                                            ERC20&nbsp;: &nbsp;
+                                                            <!--<div id="eth_uint_select_info" style="margin-top: 10px">1-->
+                                                                <!--ETH = 1 Ether = 10<sup>18</sup>&nbsp;Wei-->
+                                                            <!--</div>-->
+                                                            <hr style="margin-top: 5px;width: 20%;margin-left: 165px"/>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ERC20&nbsp;: &nbsp;
                                                             <div class="input-box input-Selector">
                                                                 <input type="text" class="wx-input"
                                                                        style="text-align: center"
                                                                        placeholder="Name or address">
                                                             </div>
                                                             <br>
-                                                            <hr style="margin-top: 10px;width: 20%;margin-left: 165px"/>
-                                                            ERC721&nbsp;: &nbsp;<input style="height: 25px;width: 100px"
+                                                            <hr style="margin-top: 5px;width: 20%;margin-left: 165px"/>
+                                                            &nbsp;&nbsp;ERC721&nbsp;: &nbsp;<input style="height: 25px;width: 200px"
                                                                                        placeholder="Name or address"><br>
-                                                            <hr style="margin-top: 10px;width: 20%;margin-left: 165px"/>
+                                                            <hr style="margin-top: 5px;width: 20%;margin-left: 165px"/>
                                                             ERC1155&nbsp;: &nbsp;<input
-                                                                style="height: 25px;width: 100px"
+                                                                style="height: 25px;width: 200px"
                                                                 placeholder="Name or address"><br>
                                                         </div>
                                                     </div>
-                                                    <!--                                                        <img style="width:150px;height:180px;margin-top:60px;margin-left: 45px" src="img/stamp.jpg">-->
                                                 </div>
 
                                             </div>
@@ -524,123 +580,22 @@
                                                         recent
                                                     </h6>
                                                     <input style="width: 220px" class="input" type="text"
-                                                           placeholder="Search title, contact...">
+                                                           placeholder="Search subject, contact...">
                                                 </div>
                                                 <div class="t-pb-30">
                                                     <div class="mx-mail-box--height" style="height: calc(100vh - 249px)"
                                                          data-simplebar>
                                                         <ul class="t-list mx-mail-box__list" id="mail-item--summary">
-                                                            <li class="mx-mail-box__list-item">
-                                                                <a href="#" class="t-link mx-mail-box__link">
-                                                                    <div class="messages__msg flex-wrap">
-                                                                        <div class="messages__avatar messages__avatar-empty t-bg-alpha"
-                                                                             style="margin-top: 10px">
-                                                                            <img src="https://ipfs.io/ipfs/QmPyro1Lg6HFFNpphweZc7YJx19x614C6JKATFRS7SzpGP"
-                                                                                 style="height: 40px;width: 40px">
-                                                                            <div class="messages__avatar-notification messages__avatar-notification--active"></div>
-                                                                        </div>
-                                                                        <div class="messages__content messages__content--unseen">
-                                                                            <div class="messages__title">
-                                                                                    <span class="messages__author text-capitalize t-text-heading">
-                                                                                        Piper Shi
-                                                                                    </span>
-                                                                                <span class="messages__time text-capitalize t-text-heading">
-                                                                                        3/7/2022
-                                                                                    </span>
-                                                                            </div>
-                                                                            <div class="messages__content-body">
-                                                                                    <span class="messages__preview text-capitalize t-text-heading"
-                                                                                          style="width: 255px">
-                                                                                        Welcome to PipeMail.
-                                                                                    </span>
-                                                                                <ul class="t-list d-flex align-items-center">
-                                                                                    <li>
-                                                                                        <img src="img/stamp.jpg"
-                                                                                             style="height: 35px;width: 31px;margin-left: 3px;">
-                                                                                    </li>
-                                                                                    <li>
-                                                                                            <span class="sm-text t-text-heading">
-                                                                                                <img src="img/asset.png"
-                                                                                                     style="width: 22px;height: 22px;margin-top: 1px;margin-right: -1px">
-                                                                                            </span>
-                                                                                    </li>
-                                                                                    <li class="t-mr-3">
-                                                                                            <span class="sm-text t-text-heading">
-                                                                                                <img src="img/paperclip.png"
-                                                                                                     style="width: 16px;height: 16px;margin-right:2px">
-                                                                                            </span>
-                                                                                    </li>
-                                                                                    <li>
-                                                                                            <span class="sm-text t-text-heading">
-                                                                                                <img src="img/star.png"
-                                                                                                     style="width: 16px;height: 16px;margin-top: -1px">
-                                                                                            </span>
-                                                                                    </li>
-                                                                                </ul>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <!--                                                                <li class="mx-mail-box__list-item">-->
-                                                            <!--                                                                    <a href="#" class="t-link mx-mail-box__link">-->
-                                                            <!--                                                                        <div class="messages__msg flex-wrap">-->
-                                                            <!--                                                                            <div class="messages__avatar messages__avatar-empty t-bg-alpha">-->
-                                                            <!--                                                                                <img src="https://ipfs.io/ipfs/QmPyro1Lg6HFFNpphweZc7YJx19x614C6JKATFRS7SzpGP" style="height: 40px;width: 40px">-->
-                                                            <!--                                                                                <div class="messages__avatar-notification messages__avatar-notification&#45;&#45;active"></div>-->
-                                                            <!--                                                                            </div>-->
-                                                            <!--                                                                            <div class="messages__content messages__content&#45;&#45;unseen">-->
-                                                            <!--                                                                                <div class="messages__title">-->
-                                                            <!--                                                                                    <span class="messages__author text-capitalize t-text-heading">-->
-                                                            <!--                                                                                        jhon-->
-                                                            <!--                                                                                        sarker-->
-                                                            <!--                                                                                    </span>-->
-                                                            <!--                                                                                    <span class="messages__time text-capitalize t-text-heading">-->
-                                                            <!--                                                                                        12/10/2020-->
-                                                            <!--                                                                                    </span>-->
-                                                            <!--                                                                                </div>-->
-                                                            <!--                                                                                <div class="messages__content-body">-->
-                                                            <!--                                                                                    <span class="messages__preview text-capitalize t-text-heading" style="width: 255px">-->
-                                                            <!--                                                                                        It is a long established factaaaa aaaaaaaaa aaaaaa aaaaaaaa-->
-                                                            <!--                                                                                    </span>-->
-                                                            <!--                                                                                    <ul class="t-list d-flex align-items-center">-->
-                                                            <!--                                                                                        <li>-->
-                                                            <!--                                                                                            <img src="img/stamp.jpg" style="height: 35px;width: 31px;margin-left: 3px;">-->
-                                                            <!--                                                                                        </li>-->
-                                                            <!--&lt;!&ndash;                                                                                        <li class="t-mr-3">&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;                                                                                            <span class="sm-text">&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;                                                                                                <i style="width:16px"></i>&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;                                                                                            </span>&ndash;&gt;-->
-                                                            <!--&lt;!&ndash;                                                                                        </li>&ndash;&gt;-->
-                                                            <!--                                                                                        <li>-->
-                                                            <!--                                                                                            <span class="sm-text t-text-heading">-->
-                                                            <!--                                                                                                <img src="img/no-asset.png" style="width: 22px;height: 22px;margin-top: -1px;margin-right: -1px">-->
-                                                            <!--                                                                                            </span>-->
-                                                            <!--                                                                                        </li>-->
-                                                            <!--                                                                                        <li class="t-mr-3">-->
-                                                            <!--                                                                                            <span class="sm-text t-text-heading">-->
-                                                            <!--                                                                                                <img src="img/no-paperclip.png" style="width: 16px;height: 16px;margin-right:2px">-->
-                                                            <!--                                                                                            </span>-->
-                                                            <!--                                                                                        </li>-->
-                                                            <!--                                                                                        <li>-->
-                                                            <!--                                                                                            <span class="sm-text t-text-heading">-->
-                                                            <!--                                                                                                <img src="img/no-star.png" style="width: 16px;height: 16px;margin-top: -1px">-->
-                                                            <!--                                                                                            </span>-->
-                                                            <!--                                                                                        </li>-->
-                                                            <!--                                                                                    </ul>-->
-
-                                                            <!--                                                                                </div>-->
-                                                            <!--                                                                            </div>-->
-                                                            <!--                                                                        </div>-->
-                                                            <!--                                                                    </a>-->
-                                                            <!--                                                                </li>-->
+                                                            <div style="text-align: center"><img id="mail_list_placeholder" src="/img/logo.png" style="height: 150px"></div>
                                                         </ul>
                                                         <div style="height: 10px"></div>
                                                     </div>
                                                 </div>
+                                                <div id="bottom_load_more_mails" style="text-align:center;transform: translate(0,-60%);" onclick="fillSentMail()">
+                                                    Load More Mails
+                                                </div>
                                             </div>
-                                            <div class="col-xl-5 col-xxl-7 t-bg-white border px-0" id="mail-details">
+                                            <div class="col-xl-5 col-xxl-7 t-bg-white border px-0 mail-details" id="default_mail_detail" style="display: inline">
                                                 <div class="d-flex flex-column justify-content-between h-100">
                                                     <div class="chat__right-head t-pt-20 t-pb-20 t-bg-light-2">
                                                         <div class="d-flex align-items-center justify-content-between"
@@ -648,25 +603,22 @@
                                                             <a href="#" class="t-link">
                                                                 <div class="messages__msg">
                                                                     <div class="messages__avatar messages__avatar-empty t-bg-alpha">
-                                                                        <div class="messages__avatar-replacer text-uppercase">
-                                                                            ps
-                                                                        </div>
                                                                         <div class="messages__avatar-notification messages__avatar-notification--active"></div>
                                                                     </div>
                                                                     <div class="messages__content messages__content--unseen">
                                                                         <div class="messages__title">
                                                                             <span class="messages__author text-capitalize">
-                                                                                Piper Shi
+                                                                                PipeMail Manager
                                                                             </span>
                                                                         </div>
                                                                         <div class="messages__content-body">
                                                                             <span class="messages__preview">
-                                                                                Welcome to PipeMail.
+                                                                                Welcome to PipeMail!
                                                                             </span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </a><img class="stamp_big_view" src="img/stamp.jpg"
+                                                            </a><img class="stamp_big_view" src="/img/stamp_peace.jpg"
                                                                      height="70px" width="60">
                                                         </div>
                                                     </div>
@@ -704,52 +656,163 @@
                                                                 Dear User,
                                                             </p>
                                                             <p class="sm-text">
-                                                                Welcome to PipeMail.Here, you can say whatever you
-                                                                want without fear of your data being compromised.
-                                                                In fact, we can't leak your data either, because we
-                                                                can only get encrypted data.
+                                                                In the past few months, we have completed and launched
+                                                                a beta version of PipeMail. And we have further refined
+                                                                the development roadmap of PipeMail, which will be of
+                                                                great help to our future work. This is a good start and
+                                                                we believe that the future will be even better
                                                             </p>
                                                             <p class="sm-text">
-                                                                After you send an email using PipeMail, you can view
-                                                                the email information. The email data will definitely
-                                                                surprise you, because you find that the content of the
-                                                                email is unreadable, and even the attachments cannot be
-                                                                opened normally. This is because PipeMail has encrypted your email.
-                                                                PipeMail use asymmetric encryption when encrypting, which ensures
-                                                                that no one except you and the recipient can decrypt your email.
+                                                                We have designed and implemented many functions, but
+                                                                currently only a small part of the functions are open
+                                                                to users, and the user experience may not be very
+                                                                user-friendly. We are sorry that this happened. All
+                                                                this is because our energy and funds are limited, we
+                                                                can only improve it little by little.
                                                             </p>
                                                             <p class="sm-text">
-                                                                At this point you're probably eager to try it out, but
-                                                                I'm sorry to tell you that you can't use it just yet.
-                                                                The core function is being tested and will be launched
-                                                                around March 20.Stay tuned on PipeMail.
+                                                                Please work with us to improve PipeMail. Your advice, feedback and funding will be a huge help to us.
+                                                                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For advice&feedback:
+                                                                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                You can contact us via <a href="https://twitter.com/PipeMailLabs" target="_blank">PipeMailLabs(twitter)</a>.
+                                                                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For donation:
+                                                                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                1. You can donate to us through <a href="https://gitcoin.co/grants/4896/pipemail-a-decentralized-mailbox-system" target="_blank">Gitcoin Grant</a>.
+                                                                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                2. You can send any token to <b>0xD402a9a141Aa6fA00BCcC8e6f235C05B431F0c55</b> on any blockchain network.<br>
+                                                            </p>
+                                                            <p class="sm-text">
+                                                                Please stay tuned on PipeMail.
                                                             </p>
                                                             <p class="sm-text">
                                                                 Best regards,<br>
                                                                 Piper Shi
                                                             </p>
+                                                            <hr>
+                                                            Icon interpretation:<br><br>
+                                                            <p>&emsp;&emsp;<img src="/img/asset.png" style="width: 22px;height: 22px;margin-top: 1px;margin-right: -1px">&nbsp;: &nbsp;A digital asset is attached to this email. &emsp;&emsp;<img src="/img/no-asset.png" style="width: 22px;height: 22px;margin-top: 1px;margin-right: -1px">&nbsp; : &nbsp;No digital asset.</p>
+                                                            <p>&emsp;&emsp;<img src="/img/paperclip.png" style="width: 16px;height: 16px;margin-right:2px">&nbsp;: &nbsp;Attachments are attached to this email.&emsp;&emsp;&nbsp;&nbsp;<img src="/img/no-paperclip.png" style="width: 16px;height: 16px;margin-right:2px">&nbsp; : &nbsp;No attachment.</p>
+                                                            <p>&emsp;&emsp;<img src="/img/star.png" style="width: 16px;height: 16px;margin-top: -1px">&nbsp;: &nbsp;This email has been favorited by you.&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;<img src="/img/no-star.png" style="width: 16px;height: 16px;margin-top: -1px">&nbsp; : &nbsp;Not favorited.</p>
                                                         </div>
                                                     </div>
-                                                    <div class="chat__right-footer d-flex align-items-center t-bg-light-2 t-pt-15 t-pb-15 t-pl-15 t-pr-15 mx-auto w-100">
+
+                                                    <div style="white-space: nowrap;overflow-x: scroll;" class="chat__right-footer d-flex align-items-center t-bg-light-2 t-pt-15 t-pb-15 t-pl-15 t-pr-15 mx-auto w-100">
+                                                        <span style="font-size: 30px;margin-right: 10px" class="fa fa-download"></span>
+<!--                                                        <span class="fa fa-files-o"></span>-->
                                                         <ul class="t-list d-flex">
-                                                            <li class="t-mr-8">
-                                                                <a href="#" class="t-link t-link--primary xlg-text">
-                                                                    <span class="fa fa-paperclip"></span>
+                                                            <!--<li class="t-mr-8" style="text-align: center" title="aaaaaaaaaaaaaaa.txt">
+                                                                <a href="#" class="t-link t-link&#45;&#45;primary xlg-text">
+                                                                    <span style="font-size: 30px;" class="fa fa-file-o"></span>
+                                                                    <span style="font-size: 30px;" class="fa fa-file-text-o"></span>
+                                                                    <span style="font-size: 30px;" class="fa fa-file-zip-o"></span>
+                                                                    <span style="font-size: 30px;" class="fa fa-file-code-o"></span>
+                                                                    <span style="font-size: 30px;" class="fa fa-file-image-o"></span>
+                                                                    <span style="font-size: 30px;" class="fa fa-file-video-o"></span>
+                                                                    <span style="font-size: 30px;" class="fa fa-file-pdf-o"></span>
+                                                                    <span style="font-size: 30px;" class="fa fa-file-audio-o"></span>
+                                                                    <span style="font-size: 30px;" class="fa fa-file-excel-o"></span>
+                                                                    <span style="font-size: 30px;" class="fa fa-file-word-o"></span>
+                                                                    <span style="font-size: 30px;" class="fa fa-file-powerpoint-o"></span><br/>aaaaaaaaaaaaaaa
                                                                 </a>
-                                                            </li>
-                                                            <li class="t-mr-8">
-                                                                <a href="#" class="t-link t-link--primary xlg-text">
-                                                                    <span class="fa fa-file-image-o"></span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="t-mr-8">
-                                                                <a href="#" class="t-link t-link--primary xlg-text">
-                                                                    <span class="fa fa-smile-o"></span>
-                                                                </a>
+                                                            </li>-->
+
+                                                            <li class="t-mr-8" style="text-align: center;margin-top: 19px;margin-bottom: 19px;font-size: 19px")>
+                                                                No Attachment.
                                                             </li>
 
+
+
                                                         </ul>
-                                                        <form action="#" class="chat__form flex-grow-1">
+                                                        <!--<form action="#" class="chat__form flex-grow-1">
+                                                            <div class="chat__search">
+                                                                <input type="text" placeholder="type message..."
+                                                                       class="chat__search-input w-100">
+                                                            </div>
+                                                        </form>-->
+                                                        <!--<ul class="t-list d-flex">
+                                                            <li class="t-ml-8">
+                                                                <a href="#" class="t-link t-link&#45;&#45;primary xlg-text">attachments
+
+                                                                    <span class="fa fa-file-text"></span>
+                                                                    <span class="fa fa-file-text-o"></span>
+                                                                    <span class="fa fa-file"></span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>-->
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <div class="col-xl-5 col-xxl-7 t-bg-white border px-0 mail-details" id="real_mail_detail" style="display: none">
+                                                <div class="d-flex flex-column justify-content-between h-100">
+                                                    <div class="chat__right-head t-pt-20 t-pb-20 t-bg-light-2" style="display: inline">
+                                                        <div class="d-flex align-items-center justify-content-between"
+                                                             style="height: 40px">
+                                                            <a href="#" class="t-link">
+                                                                <div class="messages__msg">
+                                                                    <div class="messages__avatar messages__avatar-empty t-bg-alpha">
+                                                                        <!--                                                                        <div class="messages__avatar-replacer text-uppercase">-->
+                                                                        <!--                                                                            as-->
+                                                                        <!--                                                                        </div>-->
+                                                                        <img src="" style="height: 40px;width: 40px;" id="viewMailProfile">
+                                                                        <div class="messages__avatar-notification messages__avatar-notification--active"></div>
+                                                                    </div>
+                                                                    <div class="messages__content messages__content--unseen">
+                                                                        <div class="messages__title">
+                                                                            <span class="messages__author" id="viewMailSender">
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="messages__content-body">
+                                                                            <span class="messages__author" id="viewMailReceiver">
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </a><img class="stamp_big_view" id="stamp_big_view" src="" height="70px" width="60">
+                                                        </div>
+                                                    </div>
+                                                    <div class="chat__right-main" data-simplebar>
+                                                        <div class="mx-inbox__body-head d-flex align-items-center justify-content-between flex-wrap t-pl-15 t-pr-15 t-pt-30">
+                                                            <h6 class="mt-0 mb-md-0 text-capitalize t-mr-25" id="viewMailSubject">
+                                                            </h6>
+                                                            <ul class="t-list d-flex align-items-center">
+                                                                <li class="t-list__item t-text-primary">
+                                                                    <div class="mx-circle mx-circle--sm bg-primary">
+                                                                        <span class="d-inline-block t-text-light">
+                                                                            <i class="las la-share"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="t-list__item t-text-primary">
+                                                                    <div class="mx-circle mx-circle--sm bg-primary">
+                                                                        <span class="d-inline-block t-text-light">
+                                                                            <i class="las la-print"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="t-list__item t-text-primary">
+                                                                    <div class="mx-circle mx-circle--sm bg-primary">
+                                                                        <span class="d-inline-block t-text-light">
+                                                                            <i class="las la-trash"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="t-pl-15 t-pr-15 t-pt-30 t-pb-30" id="viewMailContent">
+                                                        </div>
+                                                    </div>
+
+                                                    <div style="white-space: nowrap;overflow-x: scroll;" class="chat__right-footer d-flex align-items-center t-bg-light-2 t-pt-15 t-pb-15 t-pl-15 t-pr-15 mx-auto w-100">
+                                                        <span style="font-size: 30px;margin-right: 10px" class="fa fa-download"></span>
+                                                        <ul class="t-list d-flex" id="download_file_list">
+
+
+                                                        </ul>
+                                                        <!--<form action="#" class="chat__form flex-grow-1">
                                                             <div class="chat__search">
                                                                 <input type="text" placeholder="type message..."
                                                                        class="chat__search-input w-100">
@@ -757,14 +820,21 @@
                                                         </form>
                                                         <ul class="t-list d-flex">
                                                             <li class="t-ml-8">
-                                                                <a href="#" class="t-link t-link--primary xlg-text">
+                                                                <a href="#" class="t-link t-link&#45;&#45;primary xlg-text">
                                                                     <span class="fa fa-thumbs-o-up"></span>
                                                                 </a>
                                                             </li>
-                                                        </ul>
+                                                        </ul>-->
                                                     </div>
                                                 </div>
                                             </div>
+
+
+
+
+
+
+
                                     </div>
                                     </div>
 
@@ -795,9 +865,9 @@
 </div>
 <!-- Page Wrapper End -->
 
-<script type="text/javascript" src="js/simplebar.js"></script>
-<script type="text/javascript" src="js/stamp_big_view.js"></script>
-<script type="text/javascript" src="js/plumen.js"></script>
+<script type="text/javascript" src="/js/simplebar.js"></script>
+<script type="text/javascript" src="/js/stamp_big_view.js"></script>
+<script type="text/javascript" src="/js/plumen.js"></script>
 </body>
 
 </html>
